@@ -5,7 +5,7 @@
  */
 package controller;
 
-import dal.PlayerDBcontext;
+import dal.ManagerDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Coach;
 import model.Nationality;
-import model.Player;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ViewPlayer", urlPatterns = {"/viewP"})
-public class ViewPlayer extends HttpServlet {
-    
+@WebServlet(name = "ViewManager", urlPatterns = {"/viewM"})
+public class ViewManager extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -36,19 +36,16 @@ public class ViewPlayer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PlayerDBcontext db = new PlayerDBcontext();
-        ArrayList<Player> listGoalkeeper = db.getAllGoalkeepers();
-        ArrayList<Player> listDefender = db.getAllDefenders();
-        ArrayList<Player> listMidfielder = db.getAllMidfielders();
-        ArrayList<Player> listForward = db.getAllForwards();
+        ManagerDBcontext db = new ManagerDBcontext();
+        ArrayList<Coach> listCoachs = db.getCoachs();
         ArrayList<Nationality> listNationality = db.getAllNationality();
-        request.setAttribute("listGoalkeeper", listGoalkeeper);
-        request.setAttribute("listDefender", listDefender);
-        request.setAttribute("listMidfielder", listMidfielder);
-        request.setAttribute("listForward", listForward);
+        request.setAttribute("listCoachs", listCoachs);
         request.setAttribute("listNationality", listNationality);
-        request.getRequestDispatcher("view/teams.jsp").forward(request, response);
-    }
+        request.getRequestDispatcher("view/managers.jsp").forward(request, response);
+        
+        }
+    
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -16,7 +16,7 @@ import model.Player;
  *
  * @author Admin
  */
-public class PlayerDBContext extends DBContext{
+public class PlayerDBcontext extends DBContext{
     
     public ArrayList<Nationality> getAllNationality() {
         ArrayList<Nationality> listNationality = new ArrayList<>();

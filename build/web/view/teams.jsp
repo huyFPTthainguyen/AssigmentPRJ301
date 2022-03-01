@@ -90,16 +90,6 @@
                 text-decoration: none;
             }
 
-            .bottom-teams .frame-player h4 {
-                font-size: 20px;
-                color: #1a1a1a;
-                position: absolute;
-                width: 30px;
-                height: 30px;
-                background-color: #c70101;
-                text-align: center;
-            }
-
             .bottom-teams .frame-player h3 {
                 background-color: #c70101;
                 font-size: 40px;
@@ -108,7 +98,7 @@
                 text-align: center;
                 color: white;
                 position: absolute;
-                bottom: 20%;
+                top: 0;
             }
 
             .bottom-teams .frame-player .name-nationality {
@@ -138,14 +128,14 @@
                 <div class="top-teams">
                     <div class="row">
                         <div class="col-md-6">
-                            <h1>Chelsea Football Team</h1>
+                            <h1>Manchester United Team</h1>
                         </div>
                         <div class="col-md-6">
                             <ul class="player-management">
-                                <a href="">
+                                <a href="viewP">
                                     <li>Players</li>
                                 </a>
-                                <a href="">
+                                <a href="viewM">
                                     <li>Management</li>
                                 </a>
                             </ul>
@@ -160,7 +150,7 @@
                                 <c:forEach items="${listGoalkeeper}" var="g">
                                     <div class="col-md-3">
                                         <a href="">
-                                            <h4>${g.playerId}</h4>
+
                                             <h3>${g.number}</h3>
                                             <img src="${g.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -188,7 +178,7 @@
                                 <c:forEach items="${listDefender}" var="d">
                                     <div class="col-md-3">
                                         <a href="">
-                                            <h4>${d.playerId}</h4>
+
                                             <h3>${d.number}</h3>
                                             <img src="${d.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -216,7 +206,7 @@
                                 <c:forEach items="${listMidfielder}" var="m">
                                     <div class="col-md-3">
                                         <a href="">
-                                            <h4>${m.playerId}</h4>
+
                                             <h3>${m.number}</h3>
                                             <img src="${m.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -244,7 +234,7 @@
                                 <c:forEach items="${listForward}" var="f">
                                     <div class="col-md-3">
                                         <a href="">
-                                            <h4>${f.playerId}</h4>
+
                                             <h3>${f.number}</h3>
                                             <img src="${f.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
