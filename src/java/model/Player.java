@@ -22,7 +22,6 @@ public class Player {
     private int height;
     private int weight;
     private int roleId;
-    private String imgBackground;
     private int number;
     private String shortDescription;
     private String playerInfor;
@@ -30,7 +29,7 @@ public class Player {
     public Player() {
     }
 
-    public Player(int playerId, String playerName, String img, Date dob, String birthPlace, int nationalityId, int height, int weight, int roleId, String imgBackground, int number, String shortDescription, String playerInfor) {
+    public Player(int playerId, String playerName, String img, Date dob, String birthPlace, int nationalityId, int height, int weight, int roleId, int number, String shortDescription, String playerInfor) {
         this.playerId = playerId;
         this.playerName = playerName;
         this.img = img;
@@ -40,7 +39,6 @@ public class Player {
         this.height = height;
         this.weight = weight;
         this.roleId = roleId;
-        this.imgBackground = imgBackground;
         this.number = number;
         this.shortDescription = shortDescription;
         this.playerInfor = playerInfor;
@@ -116,14 +114,6 @@ public class Player {
 
     public void setRoleId(int roleId) {
         this.roleId = roleId;
-    }
-
-    public String getImgBackground() {
-        return imgBackground;
-    }
-
-    public void setImgBackground(String imgBackground) {
-        this.imgBackground = imgBackground;
     }
 
     public int getNumber() {
