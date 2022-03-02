@@ -7,107 +7,126 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: rgba(255, 0, 0, 0.123);
-                color: rgba(255, 0, 0, 0.822);
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #9f0000;
+            background-color: #fff;
+        }
+
+        .form-register {
+            width: 50%;
+            margin: 5% auto;
+        }
+
+        .form-register h2 {
+            font-size: 40px;
+            text-align: center;
+            color: #9f0000;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid rgb(204, 204, 204);
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #9f0000;
+            color: #fff;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #9f0000;
+        }
+
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+        }
+
+        .container {
+            padding: 25px;
+        }
+
+        span.psw {
+            float: right;
+            padding-bottom: 16px;
+            
+        }
+
+        a {
+            color: #9f0000;
+        }
+
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
             }
 
-            .form-register{
-                width: 50%;
-                margin: 3% auto;
-            }
-
-            .form-register h1{
-                text-align: center;
-                font-size: 40px;
-            }
-
-            * {
-                box-sizing: border-box;
-            }
-
-            .container {
-                padding: 40px;
-                background-color: rgba(255, 0, 0, 0.123);
-            }
-
-            input[type=text],
-            input[type=password] {
+            .cancelbtn {
                 width: 100%;
-                padding: 15px;
-                margin: 5px 0 22px 0;
-                display: inline-block;
-                border: none;
-                background: #f1f1f1;
             }
+        }
+    </style>
 
-            input[type=text]:focus,
-            input[type=password]:focus {
-                background-color: #ddd;
-                outline: none;
-            }
+    <title>Register</title>
+</head>
 
-            hr {
-                border: 1px solid #f1f1f1;
-                margin-bottom: 25px;
-            }
+<body>
 
-            .registerbtn {
-                background-color: rgba(255, 0, 0, 0.842);
-                color: white;
-                padding: 16px 20px;
-                margin: 8px 0;
-                border: none;
-                cursor: pointer;
-                width: 100%;
-                opacity: 0.9;
-            }
+    <div class="form-register">
+        <h2>Register</h2>
 
-            .registerbtn:hover {
-                opacity: 1;
-            }
+        <form action="" method="">
+            <div class="imgcontainer">
+                <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
+                    alt="" class="logo" width="100px" height="100px">
+            </div>
 
-            a {
-                color: red;
-            }
+            <div class="container">
+                <hr>
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="user" required>
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required>
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="re-pass" id="psw-repeat" required>
+                
+                </hr>
+                <button type="submit" class="registerbtn">Register</button>
+            </div>
 
-            .signin {
-                background-color: #f1f1f1;
-                text-align: center;
-            }
-        </style>
+            <div class="container" style="background-color:#f1f1f1">
+                <span class="psw">Already have an account? <a href="login.jsp">Login</a></span>
+            </div>
+        </form>
+    </div>
 
-        <title>Register</title>
-    </head>
-    <body>
-        <div class="form-register">
-            <form action="">
-                <div class="container">
-                    <h1>Register</h1>
-                    <hr>
+</body>
 
-                    <label for="user"><b>User Name</b></label>
-                    <input type="text" placeholder="Enter User Name" name="user" id="user" required>
-
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="pass" id="psw" required>
-
-                    <label for="psw-repeat"><b>Repeat Password</b></label>
-                    <input type="password" placeholder="Repeat Password" name="re-pass" id="psw-repeat" required>
-                    <hr>
-
-                    <button type="submit" class="registerbtn">Register</button>
-                </div>
-
-                <div class="container signin">
-                    <p>Already have an account? <a href="login.jsp">Login</a>.</p>
-                </div>
-            </form>
-        </div>
-    </body>
 </html>

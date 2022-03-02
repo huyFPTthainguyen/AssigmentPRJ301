@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -14,8 +15,8 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
-            color: rgba(255, 0, 0, 0.637);
-            background-color: rgba(255, 0, 0, 0.123);
+            color: #9f0000;
+            background-color: #fff;
         }
 
         .form-login {
@@ -26,6 +27,7 @@
         .form-login h2 {
             font-size: 40px;
             text-align: center;
+            color: #9f0000;
         }
 
         form {
@@ -38,13 +40,13 @@
             padding: 12px 20px;
             margin: 8px 0;
             display: inline-block;
-            border: 1px solid #ccc;
+            border: 1px solid rgb(204, 204, 204);
             box-sizing: border-box;
         }
 
         button {
-            background-color: #f44336;
-            color: white;
+            background-color: #9f0000;
+            color: #fff;
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
@@ -59,7 +61,7 @@
         .cancelbtn {
             width: auto;
             padding: 10px 18px;
-            background-color: #f44336;
+            background-color: #9f0000;
         }
 
         .imgcontainer {
@@ -76,7 +78,7 @@
             padding-top: 16px;
         }
         a{
-            color: red;
+            color: #9f0000;
         }
 
         @media screen and (max-width: 300px) {

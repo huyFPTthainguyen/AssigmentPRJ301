@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/ViewPlayer.java</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/dal/ManagerDBcontext.java</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/managers.jsp</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/teams.jsp</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/ViewManager.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/model/Nationality.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/dal/PlayerDBcontext.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/model/Player.java</file>
         </group>
     </open-files>
 </project-private>

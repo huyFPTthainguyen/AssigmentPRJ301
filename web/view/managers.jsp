@@ -112,6 +112,7 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="teams">
         <div class="container">
             <div class="top-teams">
@@ -162,7 +163,7 @@
                 </div>
             </div>
         </div>
-        
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

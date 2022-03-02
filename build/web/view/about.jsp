@@ -86,7 +86,7 @@
 </head>
 
 <body>
-
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="about">
 
         <h1>About the club</h1>
@@ -263,8 +263,7 @@
                 United is the club with the average audience second only to Borussia Dortmund.</p>
         </div>
     </div>
-    </div>
-
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

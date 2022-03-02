@@ -224,7 +224,7 @@
                                 <li><a href="home.jsp">Home</a></li>
                                 <li><a href="">News</a></li>
                                 <li><a href="">Matches</a></li>
-                                <li><a href="">Teams</a></li>
+                                <li><a href="teams.jsp">Teams</a></li>
                                 <li><a href="about.jsp">About</a></li>
                             </ul>
                         </div>
