@@ -16,18 +16,20 @@ public class Coach {
     private String img;
     private int nationalityId;
     private int roleId;
+    private String imgBack;
     private String shortDescription;
     private String coachInfor;
 
     public Coach() {
     }
 
-    public Coach(int coachId, String coachName, String img, int nationalityId, int roleId, String shortDescription, String coachInfor) {
+    public Coach(int coachId, String coachName, String img, int nationalityId, int roleId, String imgBack, String shortDescription, String coachInfor) {
         this.coachId = coachId;
         this.coachName = coachName;
         this.img = img;
         this.nationalityId = nationalityId;
         this.roleId = roleId;
+        this.imgBack = imgBack;
         this.shortDescription = shortDescription;
         this.coachInfor = coachInfor;
     }
@@ -72,6 +74,14 @@ public class Coach {
         this.roleId = roleId;
     }
 
+    public String getImgBack() {
+        return imgBack;
+    }
+
+    public void setImgBack(String imgBack) {
+        this.imgBack = imgBack;
+    }
+
     public String getShortDescription() {
         return shortDescription;
     }
@@ -88,9 +98,6 @@ public class Coach {
         this.coachInfor = coachInfor;
     }
 
-    @Override
-    public String toString() {
-        return "Coach{" + "coachId=" + coachId + ", coachName=" + coachName + ", img=" + img + ", nationalityId=" + nationalityId + ", roleId=" + roleId + ", shortDescription=" + shortDescription + ", coachInfor=" + coachInfor + '}';
-    }
+    
 
 }

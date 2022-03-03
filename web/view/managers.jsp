@@ -139,7 +139,7 @@
                         <div class="row">
                             <c:forEach items="${listCoachs}" var="g">
                                 <div class="col-md-3">
-                                    <a href="">                                        
+                                    <a href="DetailC?coachId=${g.coachId}">                                        
                                         <img src="${g.img}" alt="" width="100%" height="300px">
                                         <div class="name-nationality">
                                             <div class="row">

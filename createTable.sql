@@ -66,6 +66,7 @@ create table Player
 	img nvarchar(255) null,
 	nationalityId int null,
 	roleId int null,
+	imgBack nvarchar(255) null,
 	[description] nvarchar(255) null,
 	infor text null
  )
