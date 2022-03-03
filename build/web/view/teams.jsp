@@ -4,6 +4,7 @@
     Author     : Admin
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -98,6 +99,7 @@
                 text-align: center;
                 color: white;
                 position: absolute;
+                bottom: 20%;
                 top: 0;
             }
 
@@ -129,7 +131,7 @@
                 <div class="top-teams">
                     <div class="row">
                         <div class="col-md-6">
-                            <h1>Manchester United Team</h1>
+                            <h1>Chelsea Football Team</h1>
                         </div>
                         <div class="col-md-6">
                             <ul class="player-management">
@@ -150,8 +152,8 @@
                             <div class="row">
                                 <c:forEach items="${listGoalkeeper}" var="g">
                                     <div class="col-md-3">
-                                        <a href="">
-
+                                        <a href="DetailP?playerId=${g.playerId}">
+                                            
                                             <h3>${g.number}</h3>
                                             <img src="${g.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -178,8 +180,8 @@
                             <div class="row">
                                 <c:forEach items="${listDefender}" var="d">
                                     <div class="col-md-3">
-                                        <a href="">
-
+                                        <a href="DetailP?playerId=${d.playerId}">
+                                            
                                             <h3>${d.number}</h3>
                                             <img src="${d.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -206,8 +208,8 @@
                             <div class="row">
                                 <c:forEach items="${listMidfielder}" var="m">
                                     <div class="col-md-3">
-                                        <a href="">
-
+                                        <a href="DetailP?playerId=${m.playerId}">
+                                            
                                             <h3>${m.number}</h3>
                                             <img src="${m.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -234,8 +236,8 @@
                             <div class="row">
                                 <c:forEach items="${listForward}" var="f">
                                     <div class="col-md-3">
-                                        <a href="">
-
+                                        <a href="DetailP?playerId=${f.playerId}">
+                                            
                                             <h3>${f.number}</h3>
                                             <img src="${f.img}" alt="" width="100%" height="300px">
                                             <div class="name-nationality">
@@ -261,6 +263,6 @@
                 </div>
             </div>
         </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

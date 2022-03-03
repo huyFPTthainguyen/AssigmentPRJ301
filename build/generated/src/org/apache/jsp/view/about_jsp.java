@@ -125,9 +125,7 @@ public final class about_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\n");
       out.write("\n");
       out.write("<body>\n");
-      out.write("    ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "header.jsp", out, false);
-      out.write("\n");
+      out.write("    \n");
       out.write("    <div class=\"about\">\n");
       out.write("\n");
       out.write("        <h1>About the club</h1>\n");
@@ -304,9 +302,7 @@ public final class about_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                United is the club with the average audience second only to Borussia Dortmund.</p>\n");
       out.write("        </div>\n");
       out.write("    </div>\n");
-      out.write("    ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "footer.jsp", out, false);
-      out.write("\n");
+      out.write("    \n");
       out.write("</body>\n");
       out.write("\n");
       out.write("</html>\n");

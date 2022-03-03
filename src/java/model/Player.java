@@ -23,13 +23,14 @@ public class Player {
     private int weight;
     private int roleId;
     private int number;
+    private String imgBack;
     private String shortDescription;
     private String playerInfor;
 
     public Player() {
     }
 
-    public Player(int playerId, String playerName, String img, Date dob, String birthPlace, int nationalityId, int height, int weight, int roleId, int number, String shortDescription, String playerInfor) {
+    public Player(int playerId, String playerName, String img, Date dob, String birthPlace, int nationalityId, int height, int weight, int roleId, int number, String imgBack, String shortDescription, String playerInfor) {
         this.playerId = playerId;
         this.playerName = playerName;
         this.img = img;
@@ -40,6 +41,7 @@ public class Player {
         this.weight = weight;
         this.roleId = roleId;
         this.number = number;
+        this.imgBack = imgBack;
         this.shortDescription = shortDescription;
         this.playerInfor = playerInfor;
     }
@@ -124,6 +126,14 @@ public class Player {
         this.number = number;
     }
 
+    public String getImgBack() {
+        return imgBack;
+    }
+
+    public void setImgBack(String imgBack) {
+        this.imgBack = imgBack;
+    }
+
     public String getShortDescription() {
         return shortDescription;
     }
@@ -140,5 +150,6 @@ public class Player {
         this.playerInfor = playerInfor;
     }
 
+    
     
 }
