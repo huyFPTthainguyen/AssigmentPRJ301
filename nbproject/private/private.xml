@@ -3,8 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/ViewPlayer.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/header.jsp</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/web/login.jsp</file>
             <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/managers.jsp</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/login.jsp</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/LoginController.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/home.jsp</file>
         </group>
     </open-files>
 </project-private>
