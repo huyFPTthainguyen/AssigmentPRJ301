@@ -150,6 +150,11 @@ public class Player {
         this.playerInfor = playerInfor;
     }
 
+    @Override
+    public String toString() {
+        return "Player{" + "playerId=" + playerId + ", playerName=" + playerName + ", img=" + img + ", dob=" + dob + ", birthPlace=" + birthPlace + ", nationalityId=" + nationalityId + ", height=" + height + ", weight=" + weight + ", roleId=" + roleId + ", number=" + number + ", imgBack=" + imgBack + ", shortDescription=" + shortDescription + ", playerInfor=" + playerInfor + '}';
+    }
+    
     
     
 }

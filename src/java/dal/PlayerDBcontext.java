@@ -17,10 +17,10 @@ import model.PlayerRole;
  * @author Admin
  */
 public class PlayerDBcontext extends DBContext {
-//    public static void main(String[] args) {
-//        PlayerDBcontext db = new PlayerDBcontext();
-//        System.out.println(db.getAllPlayer());
-//    }
+    public static void main(String[] args) {
+        PlayerDBcontext db = new PlayerDBcontext();
+        System.out.println(db.getAllPlayer());
+    }
 
     public ArrayList<Nationality> getAllNationality() {
         ArrayList<Nationality> listNationality = new ArrayList<>();

@@ -110,6 +110,11 @@ public class Coach {
         this.coachInfor = coachInfor;
     }
 
+    @Override
+    public String toString() {
+        return "Coach{" + "coachId=" + coachId + ", coachName=" + coachName + ", img=" + img + ", dob=" + dob + ", nationalityId=" + nationalityId + ", roleId=" + roleId + ", imgBack=" + imgBack + ", shortDescription=" + shortDescription + ", coachInfor=" + coachInfor + '}';
+    }
+    
     
     
 

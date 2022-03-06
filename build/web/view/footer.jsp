@@ -40,7 +40,7 @@
         font-size: 14px;
     }
 
-    .row {
+    footer-1 {
         border-bottom: 1px solid;
         color: white;
     }

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : managers
-    Created on : Mar 1, 2022, 4:56:00 PM
-    Author     : Admin
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -71,39 +65,30 @@
             border: 1px solid #1a1a1a;
             color: #c70101;
         }
-
-        .bottom-teams {
+        .teams .bottom-teams .manager-infor{
             width: 100%;
         }
-
-        .bottom-teams h2 {
+        .teams .bottom-teams .manager-infor h2{
             color: #1a1a1a;
-            font-family: fantasy;
-            margin: 40px 10px;
+            margin: 50px 10px;
         }
-
-        .bottom-teams .frame-player {
+        .teams .bottom-teams .manager-infor .frame-manager{
             width: 100%;
         }
-
-        .bottom-teams .frame-player a {
-            text-decoration: none;
+        .teams .bottom-teams .manager-infor .frame-manager a{
+            text-decoration: none; 
+            color: #c70101;      
         }
-
-        .bottom-teams .frame-player .name-nationality {
+        .teams .bottom-teams .manager-infor .frame-manager .name-nationality{
             width: 100%;
             margin: 3px 0;
         }
-
-        .bottom-teams .frame-player .name-nationality p {
-            font-size: 20px;
-            color: #c70101;
-            font-weight: bold;
-            margin: 10px;
+        .teams .bottom-teams .manager-infor .frame-manager .name-nationality p{
             text-align: center;
+            font-size: 20px;
+            margin: 10px;
         }
-
-        .bottom-teams .frame-player .name-nationality img {
+        .teams .bottom-teams .manager-infor .frame-manager .name-nationality img{
             margin: 10px auto;
             display: block;
         }
@@ -139,7 +124,7 @@
                         <div class="row">
                             <c:forEach items="${listCoachs}" var="g">
                                 <div class="col-md-3">
-                                    <a href="DetailC?coachId=${g.coachId}">                                        
+                                    <a href="DetailC?coachId=${g.coachId}">
                                         <img src="${g.img}" alt="" width="100%" height="300px">
                                         <div class="name-nationality">
                                             <div class="row">
@@ -163,7 +148,7 @@
                 </div>
             </div>
         </div>
-    <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

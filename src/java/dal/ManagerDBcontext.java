@@ -18,6 +18,11 @@ import model.Nationality;
  */
 public class ManagerDBcontext extends DBContext {
 
+    public static void main(String[] args) {
+        ManagerDBcontext db = new ManagerDBcontext();
+        System.out.println(db.getCoachs());
+    }
+           
     public ArrayList<Nationality> getAllNationality() {
         ArrayList<Nationality> listNationality = new ArrayList<>();
         try {
@@ -50,6 +55,7 @@ public class ManagerDBcontext extends DBContext {
                 listCoachs.add(r);
             }
         } catch (Exception e) {
+            
         }
         return listCoachs;
     }
