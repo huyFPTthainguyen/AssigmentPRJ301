@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Admin
@@ -14,6 +16,7 @@ public class Coach {
     private int coachId;
     private String coachName;
     private String img;
+    private Date dob;
     private int nationalityId;
     private int roleId;
     private String imgBack;
@@ -23,10 +26,11 @@ public class Coach {
     public Coach() {
     }
 
-    public Coach(int coachId, String coachName, String img, int nationalityId, int roleId, String imgBack, String shortDescription, String coachInfor) {
+    public Coach(int coachId, String coachName, String img, Date dob, int nationalityId, int roleId, String imgBack, String shortDescription, String coachInfor) {
         this.coachId = coachId;
         this.coachName = coachName;
         this.img = img;
+        this.dob = dob;
         this.nationalityId = nationalityId;
         this.roleId = roleId;
         this.imgBack = imgBack;
@@ -56,6 +60,14 @@ public class Coach {
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public Date getDob() {
+        return dob;
+    }
+
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public int getNationalityId() {
@@ -98,6 +110,7 @@ public class Coach {
         this.coachInfor = coachInfor;
     }
 
+    
     
 
 }

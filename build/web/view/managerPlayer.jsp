@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -161,11 +162,12 @@
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
+                        <c:forEach items="${listPlayers}" var="x">
                         <tr>
-                            <td>1</td>
-                            <td>Huy</td>
-                            <td><img src="https://i.ytimg.com/vi/wjoS-qfM0uQ/maxresdefault.jpg" alt=""></td>
-                            <td>2022-1-1</td>
+                            <td>${x.playerId}</td>
+                            <td>${x.playerName}</td>
+                            <td><img src="${x.img}" alt=""></td>
+                            <td>${x.dob}</td>
                             <td>
                                 <a href="" class="updateplayer"><i style="font-size:20px" class="fa">&#9756; Update
                                         Player</i></a><br><br>
@@ -173,6 +175,7 @@
                                         Player</i></a>
                             </td>
                         </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>

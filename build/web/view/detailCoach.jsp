@@ -120,7 +120,11 @@
                                         <tr>
                                             <td class="attribute">Coach Name:</td>
                                             <td class="data">${coach.coachName}</td>
-                                        </tr>                                                                                                                      
+                                        </tr>
+                                        <tr>
+                                            <td class="attribute">Birthplace:</td>
+                                            <td class="data">${coach.dob}</td>
+                                        </tr>
                                         <tr>
                                             <td class="attribute">Position:</td>
                                             <c:forEach items="${listCoachRole}" var="cr">

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,11 +21,11 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .managerNew {
+        .managerCoach {
             width: 100%;
         }
 
-        .managerNew .top-managerNew h1 {
+        .managerCoach .top-managerCoach h1 {
             color: #c70101;
             font-size: 40px;
             text-align: center;
@@ -33,22 +34,22 @@
             text-transform: uppercase;
         }
 
-        .managerNew .bottom-managerNew {
+        .managerCoach .bottom-managerCoach {
             width: 100%;
         }
 
-        .managerNew .bottom-managerNew .bottom1-managerNew {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach {
             width: 100%;
         }
 
-        .managerNew .bottom-managerNew .bottom1-managerNew h3 {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach h3 {
             width: 100%;
             font-size: 25px;
             color: #c70101;
             margin-left: 65px;
         }
 
-        .managerNew .bottom-managerNew .bottom1-managerNew .fa {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach .fa {
             padding: 15px 15px;
             color: #fff;
             font-size: 15px;
@@ -57,75 +58,75 @@
             margin-left: 300px;
         }
 
-        .managerNew .bottom-managerNew .bottom1-managerNew .fa:hover {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach .fa:hover {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerNew .bottom-managerNew .bottom1-managerNew .fa:focus {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach .fa:focus {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach {
             width: 100%;
             margin-top: 40px;
             margin-left: 65px;
             text-align: center;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew th {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach th {
             background-color: #c70101;
             color: #fff;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew img {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach img {
             width: 70%;
             height: 200px;
             margin-left: 18px;
             padding: 12px 12px;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .table {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .table {
             width: 980px;
 
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .fa {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .fa {
             padding: 15px 15px;
             color: #fff;
             background: blue;
             border: 1px solid white;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .fa:hover {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .fa:hover {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .fa:focus {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .fa:focus {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .deleteNew .fa {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .deleteCoach .fa {
             background-color: #c70101;
             color: #fff;
             padding: 15px 15px;
             border: 1px solid white;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .deleteNew .fa:hover {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .deleteCoach .fa:hover {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerNew .bottom-managerNew .bottom2-managerNew .deleteNew .fa:focus {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .deleteCoach .fa:focus {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
@@ -135,44 +136,46 @@
 </head>
 
 <body>
-    <div class="managerNew">
-        <div class="top-managerNew">
-            <h1>Manager players</h1>
+    <div class="managerCoach">
+        <div class="top-managerCoach">
+            <h1>Manager Coachs</h1>
         </div>
-        <div class="bottom-managerNew">
+        <div class="bottom-managerCoach">
             <div class="container">
-                <div class="bottom1-managerNew">
+                <div class="bottom1-managerCoach">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>There are 15 News</h3>
+                            <h3>There are 15 Coachs</h3>
                         </div>
                         <div class="col-md-6">
-                            <a href="" class="addNew"><i style="font-size:20px" class="fa">&#xf196; Add
-                                    New</i></a>
+                            <a href="" class="addCoach"><i style="font-size:20px" class="fa">&#xf196; Add
+                                    Coach</i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bottom2-managerNew">
+                <div class="bottom2-managerCoach">
                     <table border="1px solid black" class="table">
                         <tr>
                             <th>ID</th>
-                            <th>Tittle</th>
+                            <th>Name</th>
                             <th>Img</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
+                        <c:forEach items="${listCoachs}" var="x">
                         <tr>
-                            <td>1</td>
-                            <td>Huy</td>
-                            <td><img src="https://i.ytimg.com/vi/wjoS-qfM0uQ/maxresdefault.jpg" alt=""></td>
-                            <td>2022-1-1</td>
+                            <td>${x.coachId}</td>
+                            <td>${x.coachName}</td>
+                            <td><img src="${x.img}" alt=""></td>
+                            <td>${x.dob}</td>
                             <td>
-                                <a href="" class="updateNew"><i style="font-size:20px" class="fa">&#9756; Update
-                                        New</i></a><br><br>
-                                <a href="" class="deleteNew"><i style="font-size:21px" class="fa">&#xf014; Delete
-                                        New</i></a>
+                                <a href="" class="updateCoach"><i style="font-size:20px" class="fa">&#9756; Update
+                                        Coach</i></a><br><br>
+                                <a href="" class="deleteCoach"><i style="font-size:21px" class="fa">&#xf014; Delete
+                                        Coach</i></a>
                             </td>
                         </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>

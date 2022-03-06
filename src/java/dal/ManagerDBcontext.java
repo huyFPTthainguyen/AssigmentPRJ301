@@ -45,8 +45,8 @@ public class ManagerDBcontext extends DBContext {
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Coach r = new Coach(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                Coach r = new Coach(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getDate(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9));
                 listCoachs.add(r);
             }
         } catch (Exception e) {
@@ -63,8 +63,8 @@ public class ManagerDBcontext extends DBContext {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
 
-                return new Coach(rs.getInt(1), rs.getString(2), rs.getString(3),
-                        rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getString(7), rs.getString(8));
+                return new Coach(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getDate(4),
+                        rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9));
 
             }
         } catch (Exception e) {
