@@ -19,7 +19,7 @@ create table News
 	img nvarchar(255) null,
 	[date] date null,
 	[description] nvarchar(255) null,
-	content nvarchar(255) null,
+	content text null,
 	typeId int null
 )
 

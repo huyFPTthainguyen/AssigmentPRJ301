@@ -79,7 +79,7 @@ public class ManagerDBcontext extends DBContext {
     }
 
     public ArrayList<CoachRole> getCoachRole() {
-        ArrayList<CoachRole> PlayerRole = new ArrayList<>();
+        ArrayList<CoachRole> CoachRole = new ArrayList<>();
         try {
             String sql = "select * from CoachRole";
             PreparedStatement stm = connection.prepareStatement(sql);
@@ -89,11 +89,11 @@ public class ManagerDBcontext extends DBContext {
                 String roleName = rs.getString(2);
 
                 CoachRole n = new CoachRole(roleId, roleName);
-                PlayerRole.add(n);
+                CoachRole.add(n);
             }
         } catch (Exception e) {
 
         }
-        return PlayerRole;
+        return CoachRole;
     }
 }
