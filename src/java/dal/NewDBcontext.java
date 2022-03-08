@@ -19,7 +19,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        System.out.println(db.getTypeNews());
+        System.out.println(db.getNewId(1));
     }
 
     public ArrayList<News> getNews() {
@@ -56,6 +56,23 @@ public class NewDBcontext extends DBContext {
 
         }
         return typeNews;
+    }
+
+    public News getNewId(int newId) {
+
+        try {
+            String sql = "select * from News where id = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, newId);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+
+                return new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+
+            }
+        } catch (Exception e) {
+        }
+        return null;
     }
 
 }

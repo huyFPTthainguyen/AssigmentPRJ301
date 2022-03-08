@@ -44,7 +44,7 @@
 
             .news .bottom-news .left-bottom-news {
                 width: 100%;
-                
+
             }
 
             .news .bottom-news .left-bottom-news h3 {
@@ -56,7 +56,7 @@
                 position: absolute;
                 border: 1px solid #fff;
                 padding: 5px 10px;
-                
+
             }
 
             .news .bottom-news .left-bottom-news img { 
@@ -83,11 +83,15 @@
                 margin-top: 20px;
                 color: gray;
             }
+            .news .bottom-news a{
+                text-decoration: none; 
+                color: #c70101;
+            }
         </style>
     </head>
 
     <body>
-        
+
         <div class="news">
             <div class="container">
                 <div class="top-news">
@@ -95,33 +99,33 @@
                 </div>
                 <c:forEach items="${listNews}" var="g">
                     <div class="bottom-news">
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="left-bottom-news">
-                                    <c:forEach items="${typeNews}" var="n">
-                                        <c:if test="${g.typeId == n.typeId}">
-                                            <h3>${n.typeName}</h3>
-                                        </c:if>
-                                    </c:forEach>                                  
-                                    <img src="${g.img}"
-                                         alt="">
+                        <a href="detailN?id=${g.newId}">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="left-bottom-news">
+                                        <c:forEach items="${typeNews}" var="n">
+                                            <c:if test="${g.typeId == n.typeId}">
+                                                <h3>${n.typeName}</h3>
+                                            </c:if>
+                                        </c:forEach>                                  
+                                        <img src="${g.img}"
+                                             alt="">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="right-bottom-news">
+                                        <h1>${g.title}</h1>
+                                        <h2>${g.shortDescription}</h2>
+                                        <h3>${g.datepublished}</h3>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
-                                <div class="right-bottom-news">
-                                    <h1>${g.title}</h1>
-                                    <h2>${g.shortDescription}</h2>
-                                    <h3>${g.datepublished}</h3>
-                                </div>
-                            </div>
-                        </div>
-
+                        </a>
                     </div>
                 </c:forEach>
             </div>
         </div>
-        
+
     </body>
 
 </html>
