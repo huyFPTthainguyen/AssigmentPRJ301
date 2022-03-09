@@ -77,6 +77,7 @@
             .news .bottom-news .right-bottom-news h2 {
                 font-size: 16px;
                 margin-top: 20px;
+                color: #c70101c5;
             }
             .news .bottom-news .right-bottom-news h3{
                 font-size: 14px;
@@ -91,7 +92,7 @@
     </head>
 
     <body>
-
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="news">
             <div class="container">
                 <div class="top-news">
@@ -99,7 +100,7 @@
                 </div>
                 <c:forEach items="${listNews}" var="g">
                     <div class="bottom-news">
-                        <a href="detailN?id=${g.newId}">
+                        <a href="detailN?newId=${g.newId}">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="left-bottom-news">
@@ -125,7 +126,7 @@
                 </c:forEach>
             </div>
         </div>
-
+        <jsp:include page="footer.jsp"></jsp:include>
     </body>
 
 </html>

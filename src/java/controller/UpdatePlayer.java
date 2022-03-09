@@ -5,23 +5,22 @@
  */
 package controller;
 
-import dal.NewDBcontext;
+import dal.PlayerDBcontext;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.News;
-import model.TypeNews;
+import model.Player;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "DetailNew", urlPatterns = {"/detailN"})
-public class DetailNew extends HttpServlet {
+@WebServlet(name = "UpdatePlayer", urlPatterns = {"/UpdateP"})
+public class UpdatePlayer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,13 +34,18 @@ public class DetailNew extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        NewDBcontext db = new NewDBcontext();
-        int id = Integer.parseInt(request.getParameter("newId"));
-        News news = db.getNewId(id);
-        ArrayList<TypeNews> listTypenews = db.getTypeNews(); 
-        request.setAttribute("news", news);
-        request.setAttribute("listTypenews", listTypenews);
-        request.getRequestDispatcher("view/detailNew.jsp").forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet UpdateControl</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet UpdateControl at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,7 +60,11 @@ public class DetailNew extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        PlayerDBcontext db = new PlayerDBcontext();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Player p = db.getPlayerById(id);
+        request.setAttribute("player", p);
+        request.getRequestDispatcher("view/updatePlayer.jsp").forward(request, response);
     }
 
     /**
@@ -70,7 +78,23 @@ public class DetailNew extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int playerId = Integer.parseInt(request.getParameter("playerId"));
+        String playerName = request.getParameter("playerName");
+        String img = request.getParameter("img");
+        String dob = request.getParameter("dob");
+        String birthPlace = request.getParameter("birthPlace");
+        int nationalityId = Integer.parseInt(request.getParameter("nationalityId"));
+        int height = Integer.parseInt(request.getParameter("height"));
+        int weight = Integer.parseInt(request.getParameter("weight"));
+        int roleId = Integer.parseInt(request.getParameter("roleId"));
+        String imgBackground = request.getParameter("imgBackground");
+        int number = Integer.parseInt(request.getParameter("number"));
+        String shortDescription = request.getParameter("shortDescription");
+        String playerInfor = request.getParameter("playerInfor");
+        PlayerDBcontext db = new PlayerDBcontext();
+        
+        db.updatePlayer(playerId, playerName, img, dob, birthPlace, nationalityId, height, weight, roleId, number, img, shortDescription, playerInfor);
+        response.sendRedirect("ManagerP");
     }
 
     /**

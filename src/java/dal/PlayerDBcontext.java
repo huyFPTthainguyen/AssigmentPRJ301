@@ -7,7 +7,10 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Nationality;
 import model.Player;
 import model.PlayerRole;
@@ -17,9 +20,10 @@ import model.PlayerRole;
  * @author Admin
  */
 public class PlayerDBcontext extends DBContext {
+
     public static void main(String[] args) {
         PlayerDBcontext db = new PlayerDBcontext();
-        System.out.println(db.getAllPlayer());
+        
     }
 
     public ArrayList<Nationality> getAllNationality() {
@@ -168,6 +172,91 @@ public class PlayerDBcontext extends DBContext {
 
         }
         return listPlayers;
+    }
+
+    public void addPlayer(String playerName, String img, String dob, String birthPlace, int nationalityId,
+            int height, int weight, int roleId, int number, String imgBack,
+            String shortDescription, String playerInfor) {
+        String sql = "insert into Player values(?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, playerName);
+            stm.setString(2, img);
+            stm.setString(3, dob);
+            stm.setString(4, birthPlace);
+            stm.setInt(5, nationalityId);
+            stm.setInt(6, height);
+            stm.setInt(7, weight);
+            stm.setInt(8, roleId);
+            stm.setInt(9, number);
+            stm.setString(10, imgBack);
+            stm.setString(11, shortDescription);
+            stm.setString(12, playerInfor);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    
+    public void updatePlayer(int playerId, String playerName, String img, String dob, String birthPlace, int nationalityId,
+            int height, int weight, int roleId, int number, String imgBack,
+            String shortDescription, String playerInfor) {
+        String sql = "update Player set playerName = ?, img = ?, dob = ?, birthPlace = ?, nationalityId = ?, \n"
+                + "height = ?, [weight] = ?, roleId = ?, imgBack = ?, number = ?, shortDescription = ?,\n"
+                + "playerInfor = ? where playerId = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, playerName);
+            stm.setString(2, img);
+            stm.setString(3, dob);
+            stm.setString(4, birthPlace);
+            stm.setInt(5, nationalityId);
+            stm.setInt(6, height);
+            stm.setInt(7, weight);
+            stm.setInt(8, roleId);
+            stm.setInt(9, number);
+            stm.setString(10, imgBack);
+            stm.setString(11, shortDescription);
+            stm.setString(12, playerInfor);
+            stm.setInt(13, playerId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
     }
     
 }

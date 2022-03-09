@@ -5,23 +5,22 @@
  */
 package controller;
 
-import dal.NewDBcontext;
+import dal.PlayerDBcontext;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.News;
-import model.TypeNews;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "DetailNew", urlPatterns = {"/detailN"})
-public class DetailNew extends HttpServlet {
+@WebServlet(name = "AddPlayer", urlPatterns = {"/AddP"})
+public class AddPlayer extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,13 +34,21 @@ public class DetailNew extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        NewDBcontext db = new NewDBcontext();
-        int id = Integer.parseInt(request.getParameter("newId"));
-        News news = db.getNewId(id);
-        ArrayList<TypeNews> listTypenews = db.getTypeNews(); 
-        request.setAttribute("news", news);
-        request.setAttribute("listTypenews", listTypenews);
-        request.getRequestDispatcher("view/detailNew.jsp").forward(request, response);
+        PlayerDBcontext db = new PlayerDBcontext();
+        String playerName = request.getParameter("playerName");
+        String img = request.getParameter("img");
+        String dob = request.getParameter("dob");
+        String birthPlace = request.getParameter("birthPlace");
+        int nationalityId = Integer.parseInt(request.getParameter("nationalityId"));
+        int height = Integer.parseInt(request.getParameter("height"));
+        int weight = Integer.parseInt(request.getParameter("weight"));
+        int roleId = Integer.parseInt(request.getParameter("roleId"));
+        int number = Integer.parseInt(request.getParameter("number"));
+        String imgBack = request.getParameter("imgBack");
+        String shortDescription = request.getParameter("shortDescription");
+        String playerInfor = request.getParameter("playerInfor");
+        db.addPlayer(playerName, img, dob, birthPlace, nationalityId, height, weight, roleId, number, imgBack, shortDescription, playerInfor);
+        response.sendRedirect("view/addPlayer.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

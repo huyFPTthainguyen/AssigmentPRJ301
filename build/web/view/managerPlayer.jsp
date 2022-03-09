@@ -148,7 +148,7 @@
                             <h3>There are 15 player</h3>
                         </div>
                         <div class="col-md-6">
-                            <a href="" class="addplayer"><i style="font-size:20px" class="fa">&#xf196; Add
+                            <a href="view/addPlayer.jsp" class="addplayer"><i style="font-size:20px" class="fa">&#xf196; Add
                                     Player</i></a>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                             <td><img src="${x.img}" alt=""></td>
                             <td>${x.dob}</td>
                             <td>
-                                <a href="" class="updateplayer"><i style="font-size:20px" class="fa">&#9756; Update
+                                <a href="view/updatePlayer.jsp" class="updateplayer"><i style="font-size:20px" class="fa">&#9756; Update
                                         Player</i></a><br><br>
                                 <a href="" class="deleteplayer"><i style="font-size:21px" class="fa">&#xf014; Delete
                                         Player</i></a>

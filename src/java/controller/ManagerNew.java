@@ -5,23 +5,40 @@
  */
 package controller;
 
+import dal.NewDBcontext;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Account;
+import model.News;
 
 /**
  *
  * @author Admin
  */
-public abstract class BasesAuthController extends HttpServlet {
+@WebServlet(name = "ManagerNew", urlPatterns = {"/ManagerN"})
+public class ManagerNew extends HttpServlet {
 
-    private boolean isAuth(HttpServletRequest request)
-    {
-        Account account = (Account)request.getSession().getAttribute("account");
-        return account != null;
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        NewDBcontext db = new NewDBcontext();
+        ArrayList<News> listNews = db.getNews();
+        request.setAttribute("listNews", listNews);
+        request.getRequestDispatcher("view/managerNew.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -36,21 +53,8 @@ public abstract class BasesAuthController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(isAuth(request))
-        {
-            //business
-            processGet(request, response);
-        }
-        else
-        {
-            response.getWriter().println("access denied!");
-        }
+        processRequest(request, response);
     }
-    
-    protected abstract void processGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException;
-    protected abstract void processPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException;
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -63,15 +67,7 @@ public abstract class BasesAuthController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(isAuth(request))
-        {
-            //business
-            processPost(request, response);
-        }
-        else
-        {
-            response.getWriter().println("access denied!");
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -84,6 +80,4 @@ public abstract class BasesAuthController extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
 }
-

@@ -21,7 +21,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
+
         <style>
             .detailNew {
                 width: 100%;
@@ -70,38 +70,35 @@
     </head>
 
     <body>
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="detailNew">
             <div class="top-detailNew">
                 <div class="container">
-                    <h1>Press Conference</h1>
+                    <c:forEach items="${listTypenews}" var="cr">
+                        <c:if test="${cr.typeId == news.typeId}">
+                            <h1>${cr.typeName}</h1>
+                        </c:if>
+                    </c:forEach>
                     <br><br><br>
-
-                    <h2>YOU VE GOT TO DUST YOURSELVES DOWN</h2>
+                    <h2>${news.title}</h2>
                     <br>
-                    <h3>2022-2-22</h3>
+                    <h3>${news.datepublished}</h3>
                 </div>
             </div>
             <div class="middle-detailNew">
-                <img src="https://image.thanhnien.vn/w1024/Uploaded/2022/ycivopcg/2022_03_07/bruyne-afp-2124.jpg" alt="">
+                <img src="${news.img}" alt="">
             </div>
             <div class="bottom-detailNew">
                 <div class="container">
                     <br><br>
-                    <h1>John O’Shea is already looking ahead to the upcoming games with Tottenham Hotspur and
-                        Atletico Madrid, after Sunday’s disappointing defeat in the Manchester derby.</h1><br>
-                    <p>“When you’ve had the success we’ve had there in three games, that unknown is not there,” the
-                        Under-18s' lead coach said.
-                        “The unknown will be there for Wolves and the message for us will be consistent, in line with every
-                        game.
-                        “They know themselves, they’re intelligent footballers and they know there’ll be key moments in the
-                        game that they’ve got to get the most out of.
-                        “We have to be organised and work hard, but we have to be exciting, back ourselves and play with an
-                        air of freedom while being organised.”
+                    <h1>${news.shortDescription}</h1><br>
+                    <p>${news.content}
                     </p>
                 </div>
             </div>
 
         </div>
+                    <jsp:include page="footer.jsp"></jsp:include>
     </body>
 
 </html>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : managerPlayer
-    Created on : Mar 5, 2022, 11:09:10 AM
+    Document   : managerNew
+    Created on : Mar 9, 2022, 9:35:57 PM
     Author     : Admin
 --%>
 
@@ -21,11 +21,11 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        .managerPlayer {
+        .managerCoach {
             width: 100%;
         }
 
-        .managerPlayer .top-managerPlayer h1 {
+        .managerCoach .top-managerCoach h1 {
             color: #c70101;
             font-size: 40px;
             text-align: center;
@@ -34,22 +34,22 @@
             text-transform: uppercase;
         }
 
-        .managerPlayer .bottom-managerPlayer {
+        .managerCoach .bottom-managerCoach {
             width: 100%;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom1-managerPlayer {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach {
             width: 100%;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom1-managerPlayer h3 {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach h3 {
             width: 100%;
             font-size: 25px;
             color: #c70101;
             margin-left: 65px;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom1-managerPlayer .fa {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach .fa {
             padding: 15px 15px;
             color: #fff;
             font-size: 15px;
@@ -58,75 +58,75 @@
             margin-left: 300px;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom1-managerPlayer .fa:hover {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach .fa:hover {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom1-managerPlayer .fa:focus {
+        .managerCoach .bottom-managerCoach .bottom1-managerCoach .fa:focus {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach {
             width: 100%;
             margin-top: 40px;
             margin-left: 65px;
             text-align: center;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer th {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach th {
             background-color: #c70101;
             color: #fff;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer img {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach img {
             width: 70%;
             height: 200px;
             margin-left: 18px;
             padding: 12px 12px;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .table {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .table {
             width: 980px;
 
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .fa {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .fa {
             padding: 15px 15px;
             color: #fff;
             background: blue;
             border: 1px solid white;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .fa:hover {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .fa:hover {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .fa:focus {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .fa:focus {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .deleteplayer .fa {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .deleteCoach .fa {
             background-color: #c70101;
             color: #fff;
             padding: 15px 15px;
             border: 1px solid white;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .deleteplayer .fa:hover {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .deleteCoach .fa:hover {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
         }
 
-        .managerPlayer .bottom-managerPlayer .bottom2-managerPlayer .deleteplayer .fa:focus {
+        .managerCoach .bottom-managerCoach .bottom2-managerCoach .deleteCoach .fa:focus {
             color: #c70101;
             background-color: #fff;
             border: 1px solid #140a47;
@@ -136,43 +136,43 @@
 </head>
 
 <body>
-    <div class="managerPlayer">
-        <div class="top-managerPlayer">
-            <h1>Manager players</h1>
+    <div class="managerCoach">
+        <div class="top-managerCoach">
+            <h1>Manager News</h1>
         </div>
-        <div class="bottom-managerPlayer">
+        <div class="bottom-managerCoach">
             <div class="container">
-                <div class="bottom1-managerPlayer">
+                <div class="bottom1-managerCoach">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>There are 15 player</h3>
+                            <h3>There are 15 News</h3>
                         </div>
                         <div class="col-md-6">
-                            <a href="view/addPlayer.jsp" class="addplayer"><i style="font-size:20px" class="fa">&#xf196; Add
-                                    Player</i></a>
+                            <a href="" class="addCoach"><i style="font-size:20px" class="fa">&#xf196; Add
+                                    New</i></a>
                         </div>
                     </div>
                 </div>
-                <div class="bottom2-managerPlayer">
+                <div class="bottom2-managerCoach">
                     <table border="1px solid black" class="table">
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Tittle</th>
                             <th>Img</th>
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
-                        <c:forEach items="${listPlayers}" var="x">
+                        <c:forEach items="${listNews}" var="x">
                         <tr>
-                            <td>${x.playerId}</td>
-                            <td>${x.playerName}</td>
+                            <td>${x.newId}</td>
+                            <td>${x.title}</td>
                             <td><img src="${x.img}" alt=""></td>
-                            <td>${x.dob}</td>
+                            <td>${x.datepublished}</td>
                             <td>
-                                <a href="view/updatePlayer.jsp" class="updateplayer"><i style="font-size:20px" class="fa">&#9756; Update
-                                        Player</i></a><br><br>
-                                <a href="" class="deleteplayer"><i style="font-size:21px" class="fa">&#xf014; Delete
-                                        Player</i></a>
+                                <a href="" class="updateCoach"><i style="font-size:20px" class="fa">&#9756; Update
+                                        New</i></a><br><br>
+                                <a href="" class="deleteCoach"><i style="font-size:21px" class="fa">&#xf014; Delete
+                                        New</i></a>
                             </td>
                         </tr>
                         </c:forEach>
