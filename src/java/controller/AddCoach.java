@@ -5,24 +5,21 @@
  */
 package controller;
 
-import dal.PlayerDBcontext;
+import dal.ManagerDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Player;
-import model.PlayerRole;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ManagerPlayer", urlPatterns = {"/ManagerP"})
-public class ManagerPlayer extends HttpServlet {
+@WebServlet(name = "AddCoach", urlPatterns = {"/AddC"})
+public class AddCoach extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +33,17 @@ public class ManagerPlayer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PlayerDBcontext db = new PlayerDBcontext();
-        ArrayList<Player> listPlayers = db.getAllPlayer();
-        request.setAttribute("listPlayers", listPlayers);
-        request.getRequestDispatcher("view/managerPlayer.jsp").forward(request, response);
+        ManagerDBcontext db = new ManagerDBcontext();
+        String coachName = request.getParameter("coachName");
+        String img = request.getParameter("img");
+        String dob = request.getParameter("dob");
+        int nationalityId = Integer.parseInt(request.getParameter("nationalityId"));
+        int roleId = Integer.parseInt(request.getParameter("roleId"));
+        String imgBack = request.getParameter("imgBack");
+        String shortDescription = request.getParameter("shortDescription");
+        String coachInfor = request.getParameter("coachInfor");
+        db.addCoach(coachName, img, dob, nationalityId, roleId, imgBack, shortDescription, coachInfor);
+        response.sendRedirect("view/addCoach.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

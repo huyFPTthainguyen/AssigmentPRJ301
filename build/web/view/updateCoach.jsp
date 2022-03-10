@@ -1,6 +1,6 @@
 <%-- 
-    Document   : updatePlayer
-    Created on : Mar 9, 2022, 11:47:55 PM
+    Document   : updateCoach
+    Created on : Mar 10, 2022, 9:26:08 PM
     Author     : Admin
 --%>
 
@@ -66,63 +66,54 @@
     </head>
     <body>
         <div class="form-update">
-            <h3>Update Player</h3>
+            <h3>Update Coach</h3>
 
             <div class="container">
-                <form action="UpdateP" method="post">
+                <form action="UpdateC" method="post">
              
                     <label for="">ID</label>
-                    <input type="text" name="playerId" placeholder="" value="${player.playerId}" placeholder="" readonly="">
+                    <input type="text" name="coachId" placeholder="" value="${coach.coachId}" placeholder="" readonly="">
                     
                     <label for="">Name</label>
-                    <input type="text" name="playerName" placeholder="Enter name.." value="${player.playerName}">
+                    <input type="text" name="coachName" placeholder="Enter name.." value="${coach.coachName}">
 
                     <label for="">Img</label>
-                    <input type="text" name="img" value="${player.img}" placeholder="Enter img..">
+                    <input type="text" name="img" value="${coach.img}" placeholder="Enter img..">
                     
                     <label for="">Date of Birth</label>
-                    <input type="text" name="dob" placeholder="Enter date of birth.." value="${player.dob}">
+                    <input type="text" name="dob" placeholder="Enter date of birth.." value="${coach.dob}">
 
-                    <label for="">Birth Place</label>
-                    <input type="text" name="birthPlace" placeholder="Enter birth place.." value="${player.birthPlace}">
+                    
 
-                    <jsp:useBean id="dal" scope="page" class="dal.PlayerDBcontext" />
+                    <jsp:useBean id="dal" scope="page" class="dal.ManagerDBcontext" />
                     <label for="">Nationality</label>
                     <select name="nationalityId">
                         <c:forEach items="${dal.allNationality}" var="listNA">
-                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==player.getNationalityId()?"selected":""}>${listNA.nationalityName}</option>
+                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==coach.getNationalityId()?"selected":""}>${listNA.nationalityName}</option>
                         </c:forEach>
                     </select>
                     
-                    <label for="">Height</label>
-                    <input type="text" name="height" placeholder="Enter height.." value="${player.height}">
-
-                    <label for="">Weight</label>
-                    <input type="text" name="weight" placeholder="Enter weight.." value="${player.weight}">
+                    
 
                     <label for="">Role</label>
                     <select name="roleId">
-                        <c:forEach items="${dal.getPlayerRole()}" var="cr">
-                            <option value="${cr.roleId}" ${cr.roleId==player.getRoleId()?"selected":""}>${cr.roleName}</option>
+                        <c:forEach items="${dal.getCoachRole()}" var="cr">
+                            <option value="${cr.roleId}" ${cr.roleId==coach.getRoleId()?"selected":""}>${cr.roleName}</option>
                         </c:forEach>
                     </select>
 
                    <label for="">Img Background</label>
-                    <input type="text" name="imgBack" placeholder="Enter img background.." value="${player.imgBack}">
-
-                    <label for="">Number</label>
-                    <input type="text" name="number" placeholder="Enter number.." value="${player.number}">
-
+                    <input type="text" name="imgBack" placeholder="Enter img background.." value="${coach.imgBack}">
+                    
                     <label for="">Short Description</label>
-                    <textarea name="shortDescription" placeholder="Write something.." style="height:200px">${player.shortDescription}</textarea>
+                    <textarea name="shortDescription" placeholder="Write something.." style="height:200px">${coach.shortDescription}</textarea>
 
                     <label for="">Information</label>
-                    <textarea name="playerInfor" placeholder="Write something.." style="height:200px">${player.playerInfor}</textarea>
+                    <textarea name="playerInfor" placeholder="Write something.." style="height:200px">${coach.coachInfor}</textarea>
 
-                    <input type="submit" value="Update Player">
+                    <input type="submit" value="Update Coach">
                 </form>
             </div>
         </div>
     </body>
 </html>
-

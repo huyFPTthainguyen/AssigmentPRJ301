@@ -5,24 +5,22 @@
  */
 package controller;
 
-import dal.PlayerDBcontext;
+import dal.ManagerDBcontext;
+import dal.NewDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Player;
-import model.PlayerRole;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ManagerPlayer", urlPatterns = {"/ManagerP"})
-public class ManagerPlayer extends HttpServlet {
+@WebServlet(name = "AddNew", urlPatterns = {"/AddN"})
+public class AddNew extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +34,15 @@ public class ManagerPlayer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PlayerDBcontext db = new PlayerDBcontext();
-        ArrayList<Player> listPlayers = db.getAllPlayer();
-        request.setAttribute("listPlayers", listPlayers);
-        request.getRequestDispatcher("view/managerPlayer.jsp").forward(request, response);
+        NewDBcontext db = new NewDBcontext();
+        String title = request.getParameter("title");
+        String img = request.getParameter("img");
+        String datepublished = request.getParameter("datepublished");
+        String shortDescription = request.getParameter("shortDescription");
+        String content = request.getParameter("content");
+        int typeId = Integer.parseInt(request.getParameter("typeId"));
+        db.addNew(title, img, datepublished, shortDescription, content, typeId);
+        response.sendRedirect("view/addNew.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

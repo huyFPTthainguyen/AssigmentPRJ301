@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addPlayer
-    Created on : Mar 9, 2022, 10:49:41 PM
+    Document   : addCoach
+    Created on : Mar 10, 2022, 9:08:43 PM
     Author     : Admin
 --%>
 
@@ -66,59 +66,41 @@
     </head>
     <body>
         <div class="form-update">
-            <h3>Add Player</h3>
+            <h3>Add Coach</h3>
 
             <div class="container">
-                <form action="AddP" method="POST">
+                <form action="AddC" method="post">
+                                    
                     <label for="">Name</label>
-                    <input type="text" name="name" placeholder="Enter name..">
+                    <input type="text" name="coachName" value="${coach.coachName}" placeholder="Enter name..">
 
                     <label for="">Img</label>
-                    <input type="text" name="img" placeholder="Enter img..">
+                    <input type="text" name="img" value="${coach.img}" placeholder="Enter img..">
 
-                    <label for="">Date</label>
-                    <input type="text" name="date" placeholder="Enter date..">
-
-                    <label for="">Place</label>
-                    <input type="text" name="place" placeholder="Enter place..">
-
-                    <jsp:useBean id="dal" scope="page" class="dal.PlayerDBcontext" />
-                    
+                    <jsp:useBean id="dal" scope="page" class="dal.ManagerDBcontext" />
                     <label for="">Nationality</label>
                     <select name="nationalityId">
                         <c:forEach items="${dal.allNationality}" var="listNA">
-                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==player.getNationalityId()?"selected":""}>${listNA.nationalityName}</option>
+                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==coach.getNationalityId()?"selected":""}>${listNA.nationalityName}</option>
                         </c:forEach>
                     </select>
-                    <label for="">height</label>
-                    <input type="text" name="height" placeholder="Enter height..">
-                    <label for="">weight</label>
-                    <input type="text" name="weight" placeholder="Enter weight..">
 
                     <label for="">Role</label>
                     <select name="roleId">
-                        <c:forEach items="${dal.getPlayerRole()}" var="cr">
-                            <option value="${cr.roleId}" ${cr.roleId==player.getRoleId()?"selected":""}>${cr.roleName}</option>
+                        <c:forEach items="${dal.getCoachRole()}" var="cr">
+                            <option value="${cr.roleId}" ${cr.roleId==coach.getRoleId()?"selected":""}>${cr.roleName}</option>
                         </c:forEach>
                     </select>
 
-                    <label for="">number</label>
-                    <input type="text" name="number" placeholder="Enter number..">
-                    
-                    <label for="">imgBack</label>
-                    <input type="text" name="img" placeholder="Enter imgBack..">
-
-
                     <label for="">Short Description</label>
-                    <textarea name="shortDescription" placeholder="Write something.." style="height:200px">${player.shortDescription}</textarea>
+                    <textarea name="shortDescription" placeholder="Write something.." style="height:200px">${coach.shortDescription}</textarea>
 
                     <label for="">Information</label>
-                    <textarea name="playerInfor" placeholder="Write something.." style="height:200px">${player.playerInfor}</textarea>
+                    <textarea name="coachInfor" placeholder="Write something.." style="height:200px">${coach.coachInfor}</textarea>
 
-                    <input type="submit" value="Add Player">
+                    <input type="submit" value="Add Coach">
                 </form>
             </div>
         </div>
     </body>
 </html>
-

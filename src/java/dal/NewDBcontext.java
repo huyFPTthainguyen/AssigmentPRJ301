@@ -7,7 +7,10 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.News;
 import model.TypeNews;
 
@@ -19,7 +22,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        System.out.println(db.getNewId(1));
+        db.addNew("fdfdsf", "fdssdf", "2022-12-3", "fdsfdsf", "fdsfdsf",2);
     }
 
     public ArrayList<News> getNews() {
@@ -75,4 +78,71 @@ public class NewDBcontext extends DBContext {
         return null;
     }
 
+    public void addNew(String title, String img, String datepublished,String shortDescription, String content, int typeId) {
+        String sql = "insert into News values(?,?,?,?,?,?)";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, title);
+            stm.setString(2, img);
+            stm.setString(3, datepublished);
+            stm.setString(4, shortDescription);
+            stm.setString(5, content);
+            stm.setInt(6, typeId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    
+    public void updateNew(int newId, String title, String img, String datepublished,String shortDescription, String content, int typeId) {
+        String sql = "update News set title = ?, img = ?, date = ?,  \n"
+                + " description = ?,\n"
+                + "content = ?, typeId = ? where id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, title);
+            stm.setString(2, img);
+            stm.setString(3, datepublished);
+            stm.setString(4, shortDescription);
+            stm.setString(5, content);
+            stm.setInt(6, typeId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
 }

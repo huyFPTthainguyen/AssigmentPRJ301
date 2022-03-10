@@ -70,29 +70,48 @@
 
             <div class="container">
                 <form action="UpdateP" method="post">
+             
                     <label for="">ID</label>
-                    <input type="text" name="coachId" placeholder="" value="${player.playerId}" readonly="">
+                    <input type="text" name="playerId" placeholder="" value="${player.playerId}" placeholder="" readonly="">
                     
                     <label for="">Name</label>
-                    <input type="text" name="coachName" value="${player.playerName}" >
+                    <input type="text" name="playerName" placeholder="Enter name.." value="${player.playerName}">
 
                     <label for="">Img</label>
                     <input type="text" name="img" value="${player.img}" placeholder="Enter img..">
+                    
+                    <label for="">Date of Birth</label>
+                    <input type="text" name="dob" placeholder="Enter date of birth.." value="${player.dob}">
+
+                    <label for="">Birth Place</label>
+                    <input type="text" name="birthPlace" placeholder="Enter birth place.." value="${player.birthPlace}">
 
                     <jsp:useBean id="dal" scope="page" class="dal.PlayerDBcontext" />
                     <label for="">Nationality</label>
                     <select name="nationalityId">
-                        <c:forEach items="${dao.getAllNationality()}" var="listNA">
-                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==player.getAllNationality()?"selected":""}>${listNA.nationalityName}</option>
+                        <c:forEach items="${dal.allNationality}" var="listNA">
+                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==player.getNationalityId()?"selected":""}>${listNA.nationalityName}</option>
                         </c:forEach>
                     </select>
+                    
+                    <label for="">Height</label>
+                    <input type="text" name="height" placeholder="Enter height.." value="${player.height}">
+
+                    <label for="">Weight</label>
+                    <input type="text" name="weight" placeholder="Enter weight.." value="${player.weight}">
 
                     <label for="">Role</label>
                     <select name="roleId">
-                        <c:forEach items="${dao.getPlayerRole()}" var="cr">
-                            <option value="${cr.roleId}" ${cr.roleId==player.getPlayerById?"selected":""}>${cr.roleName}</option>
+                        <c:forEach items="${dal.getPlayerRole()}" var="cr">
+                            <option value="${cr.roleId}" ${cr.roleId==player.getRoleId()?"selected":""}>${cr.roleName}</option>
                         </c:forEach>
                     </select>
+
+                   <label for="">Img Background</label>
+                    <input type="text" name="imgBack" placeholder="Enter img background.." value="${player.imgBack}">
+
+                    <label for="">Number</label>
+                    <input type="text" name="number" placeholder="Enter number.." value="${player.number}">
 
                     <label for="">Short Description</label>
                     <textarea name="shortDescription" placeholder="Write something.." style="height:200px">${player.shortDescription}</textarea>

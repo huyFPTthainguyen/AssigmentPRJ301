@@ -23,7 +23,7 @@ public class PlayerDBcontext extends DBContext {
 
     public static void main(String[] args) {
         PlayerDBcontext db = new PlayerDBcontext();
-        
+        db.deletePlayer(1);
     }
 
     public ArrayList<Nationality> getAllNationality() {
@@ -218,9 +218,9 @@ public class PlayerDBcontext extends DBContext {
     public void updatePlayer(int playerId, String playerName, String img, String dob, String birthPlace, int nationalityId,
             int height, int weight, int roleId, int number, String imgBack,
             String shortDescription, String playerInfor) {
-        String sql = "update Player set playerName = ?, img = ?, dob = ?, birthPlace = ?, nationalityId = ?, \n"
-                + "height = ?, [weight] = ?, roleId = ?, imgBack = ?, number = ?, shortDescription = ?,\n"
-                + "playerInfor = ? where playerId = ?";
+        String sql = "update Player set name = ?, img = ?, dob = ?, birthPlace = ?, nationalityId = ?, \n"
+                + "height = ?, [weight] = ?, roleId = ?, number = ?, imgBack = ?,  description = ?,\n"
+                + "infor = ? where id = ?";
         PreparedStatement stm = null;
         try {
             stm = connection.prepareStatement(sql);
@@ -237,6 +237,34 @@ public class PlayerDBcontext extends DBContext {
             stm.setString(11, shortDescription);
             stm.setString(12, playerInfor);
             stm.setInt(13, playerId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    
+    public void deletePlayer(int id) {
+        String sql = "delete from Player where id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);

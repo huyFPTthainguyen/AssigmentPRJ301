@@ -83,10 +83,11 @@
                     <input type="text" name="place" placeholder="Enter place..">
 
                     <jsp:useBean id="dal" scope="page" class="dal.PlayerDBcontext" />
+                    
                     <label for="">Nationality</label>
                     <select name="nationalityId">
-                        <c:forEach items="${dal.getAllNationality()}" var="listNA">
-                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==player.getAllNationality()?"selected":""}>${listNA.nationalityName}</option>
+                        <c:forEach items="${dal.allNationality}" var="listNA">
+                            <option value="${listNA.nationalityId}" ${listNA.nationalityId==player.getNationalityId()?"selected":""}>${listNA.nationalityName}</option>
                         </c:forEach>
                     </select>
                     <label for="">height</label>
@@ -97,7 +98,7 @@
                     <label for="">Role</label>
                     <select name="roleId">
                         <c:forEach items="${dal.getPlayerRole()}" var="cr">
-                            <option value="${cr.roleId}" ${cr.roleId==player.getPlayerById?"selected":""}>${cr.roleName}</option>
+                            <option value="${cr.roleId}" ${cr.roleId==player.getRoleId()?"selected":""}>${cr.roleName}</option>
                         </c:forEach>
                     </select>
 

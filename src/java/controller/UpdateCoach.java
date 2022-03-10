@@ -5,24 +5,22 @@
  */
 package controller;
 
-import dal.PlayerDBcontext;
+import dal.ManagerDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Player;
-import model.PlayerRole;
+import model.Coach;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ManagerPlayer", urlPatterns = {"/ManagerP"})
-public class ManagerPlayer extends HttpServlet {
+@WebServlet(name = "UpdateCoach", urlPatterns = {"/UpdateC"})
+public class UpdateCoach extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,10 +34,11 @@ public class ManagerPlayer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PlayerDBcontext db = new PlayerDBcontext();
-        ArrayList<Player> listPlayers = db.getAllPlayer();
-        request.setAttribute("listPlayers", listPlayers);
-        request.getRequestDispatcher("view/managerPlayer.jsp").forward(request, response);
+        ManagerDBcontext db = new ManagerDBcontext();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Coach p = db.getCoachId(id);
+        request.setAttribute("coach", p);
+        request.getRequestDispatcher("view/updateCoach.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -68,7 +67,23 @@ public class ManagerPlayer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        int coachId = Integer.parseInt(request.getParameter("coachId"));
+        String coachName = request.getParameter("coachName");
+        String img = request.getParameter("img");
+        String dob = request.getParameter("dob");
+        
+        int nationalityId = Integer.parseInt(request.getParameter("nationalityId"));
+        
+        int roleId = Integer.parseInt(request.getParameter("roleId"));
+        
+        
+        String imgBack = request.getParameter("imgBack");
+        String shortDescription = request.getParameter("shortDescription");
+        String coachInfor = request.getParameter("coachInfor");
+        ManagerDBcontext db = new ManagerDBcontext();
+        db.updateCoach(coachId, coachName, img, dob, nationalityId, roleId, imgBack, shortDescription, coachInfor);
+
+        response.sendRedirect("ManagerC");
     }
 
     /**

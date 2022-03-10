@@ -34,18 +34,11 @@ public class UpdatePlayer extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UpdateControl</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UpdateControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        PlayerDBcontext db = new PlayerDBcontext();
+        int id = Integer.parseInt(request.getParameter("id"));
+        Player p = db.getPlayerById(id);
+        request.setAttribute("player", p);
+        request.getRequestDispatcher("view/updatePlayer.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -60,11 +53,7 @@ public class UpdatePlayer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PlayerDBcontext db = new PlayerDBcontext();
-        int id = Integer.parseInt(request.getParameter("id"));
-        Player p = db.getPlayerById(id);
-        request.setAttribute("player", p);
-        request.getRequestDispatcher("view/updatePlayer.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -87,13 +76,14 @@ public class UpdatePlayer extends HttpServlet {
         int height = Integer.parseInt(request.getParameter("height"));
         int weight = Integer.parseInt(request.getParameter("weight"));
         int roleId = Integer.parseInt(request.getParameter("roleId"));
-        String imgBackground = request.getParameter("imgBackground");
+        
         int number = Integer.parseInt(request.getParameter("number"));
+        String imgBack = request.getParameter("imgBack");
         String shortDescription = request.getParameter("shortDescription");
         String playerInfor = request.getParameter("playerInfor");
         PlayerDBcontext db = new PlayerDBcontext();
         
-        db.updatePlayer(playerId, playerName, img, dob, birthPlace, nationalityId, height, weight, roleId, number, img, shortDescription, playerInfor);
+        db.updatePlayer(playerId, playerName, img, dob, birthPlace, nationalityId, height, weight, roleId, number, imgBack, shortDescription, playerInfor);
         response.sendRedirect("ManagerP");
     }
 

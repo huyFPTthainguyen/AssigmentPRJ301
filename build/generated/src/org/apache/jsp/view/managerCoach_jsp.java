@@ -197,7 +197,7 @@ public final class managerCoach_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("                            <h3>There are 15 Coachs</h3>\n");
       out.write("                        </div>\n");
       out.write("                        <div class=\"col-md-6\">\n");
-      out.write("                            <a href=\"\" class=\"addCoach\"><i style=\"font-size:20px\" class=\"fa\">&#xf196; Add\n");
+      out.write("                            <a href=\"view/addCoach.jsp\" class=\"addCoach\"><i style=\"font-size:20px\" class=\"fa\">&#xf196; Add\n");
       out.write("                                    Coach</i></a>\n");
       out.write("                        </div>\n");
       out.write("                    </div>\n");
@@ -266,9 +266,13 @@ public final class managerCoach_jsp extends org.apache.jasper.runtime.HttpJspBas
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.dob}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\n");
           out.write("                            <td>\n");
-          out.write("                                <a href=\"\" class=\"updateCoach\"><i style=\"font-size:20px\" class=\"fa\">&#9756; Update\n");
+          out.write("                                <a href=\"UpdateC?id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.coachId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"updateCoach\"><i style=\"font-size:20px\" class=\"fa\">&#9756; Update\n");
           out.write("                                        Coach</i></a><br><br>\n");
-          out.write("                                <a href=\"\" class=\"deleteCoach\"><i style=\"font-size:21px\" class=\"fa\">&#xf014; Delete\n");
+          out.write("                                <a href=\"DeleteC?id=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.coachId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" class=\"deleteCoach\"><i style=\"font-size:21px\" class=\"fa\">&#xf014; Delete\n");
           out.write("                                        Coach</i></a>\n");
           out.write("                            </td>\n");
           out.write("                        </tr>\n");

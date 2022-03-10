@@ -169,9 +169,9 @@
                             <td><img src="${x.img}" alt=""></td>
                             <td>${x.dob}</td>
                             <td>
-                                <a href="view/updatePlayer.jsp" class="updateplayer"><i style="font-size:20px" class="fa">&#9756; Update
+                                <a href="UpdateP?id=${x.playerId}" class="updateplayer"><i style="font-size:20px" class="fa">&#9756; Update
                                         Player</i></a><br><br>
-                                <a href="" class="deleteplayer"><i style="font-size:21px" class="fa">&#xf014; Delete
+                                <a href="DeleteP?id=${x.playerId}" class="deleteplayer"><i style="font-size:21px" class="fa">&#xf014; Delete
                                         Player</i></a>
                             </td>
                         </tr>

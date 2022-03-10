@@ -7,7 +7,10 @@ package dal;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Coach;
 import model.CoachRole;
 import model.Nationality;
@@ -20,9 +23,9 @@ public class ManagerDBcontext extends DBContext {
 
     public static void main(String[] args) {
         ManagerDBcontext db = new ManagerDBcontext();
-        System.out.println(db.getCoachs());
+        db.addCoach("dfds", "dsfdsfd", "2022-12-2", 2, 3, "dfsfsdfdfd", "fdsfsaf", "sfdfsdfdsf");
     }
-           
+
     public ArrayList<Nationality> getAllNationality() {
         ArrayList<Nationality> listNationality = new ArrayList<>();
         try {
@@ -50,12 +53,12 @@ public class ManagerDBcontext extends DBContext {
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                Coach r = new Coach(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getDate(4),
+                Coach r = new Coach(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9));
                 listCoachs.add(r);
             }
         } catch (Exception e) {
-            
+
         }
         return listCoachs;
     }
@@ -69,7 +72,7 @@ public class ManagerDBcontext extends DBContext {
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
 
-                return new Coach(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getDate(4),
+                return new Coach(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),
                         rs.getInt(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9));
 
             }
@@ -95,5 +98,109 @@ public class ManagerDBcontext extends DBContext {
 
         }
         return CoachRole;
+    }
+
+    public void addCoach(String coachName, String img, String dob, int nationalityId,
+            int roleId, String imgBack,
+            String shortDescription, String coachInfor) {
+        String sql = "insert into Coach values(?,?,?,?,?,?,?,?)";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, coachName);
+            stm.setString(2, img);
+            stm.setString(3, dob);
+            stm.setInt(4, nationalityId);
+            stm.setInt(5, roleId);
+            stm.setString(6, imgBack);
+            stm.setString(7, shortDescription);
+            stm.setString(8, coachInfor);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+
+    public void updateCoach(int coachId, String coachName, String img, String dob, int nationalityId,
+            int roleId, String imgBack,
+            String shortDescription, String coachInfor) {
+        String sql = "update Coach set name = ?, img = ?, dob = ?,  nationalityId = ?, \n"
+                + " roleId = ?, imgBack = ?,  description = ?,\n"
+                + "infor = ? where id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, coachName);
+            stm.setString(2, img);
+            stm.setString(3, dob);          
+            stm.setInt(4, nationalityId);           
+            stm.setInt(5, roleId);       
+            stm.setString(6, imgBack);
+            stm.setString(7, shortDescription);
+            stm.setString(8, coachInfor);
+            stm.setInt(9, coachId);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    public void deleteCoach(int id) {
+        String sql = "delete from Coach where id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
     }
 }

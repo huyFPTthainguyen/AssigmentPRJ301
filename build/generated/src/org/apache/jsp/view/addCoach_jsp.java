@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class addCoach_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -115,33 +115,31 @@ public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <div class=\"form-update\">\n");
-      out.write("            <h3>Add Player</h3>\n");
+      out.write("            <h3>Add Coach</h3>\n");
       out.write("\n");
       out.write("            <div class=\"container\">\n");
-      out.write("                <form action=\"AddP\" method=\"POST\">\n");
+      out.write("                <form action=\"AddC\" method=\"post\">\n");
+      out.write("                                    \n");
       out.write("                    <label for=\"\">Name</label>\n");
-      out.write("                    <input type=\"text\" name=\"name\" placeholder=\"Enter name..\">\n");
+      out.write("                    <input type=\"text\" name=\"coachName\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${coach.coachName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" placeholder=\"Enter name..\">\n");
       out.write("\n");
       out.write("                    <label for=\"\">Img</label>\n");
-      out.write("                    <input type=\"text\" name=\"img\" placeholder=\"Enter img..\">\n");
-      out.write("\n");
-      out.write("                    <label for=\"\">Date</label>\n");
-      out.write("                    <input type=\"text\" name=\"date\" placeholder=\"Enter date..\">\n");
-      out.write("\n");
-      out.write("                    <label for=\"\">Place</label>\n");
-      out.write("                    <input type=\"text\" name=\"place\" placeholder=\"Enter place..\">\n");
+      out.write("                    <input type=\"text\" name=\"img\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${coach.img}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" placeholder=\"Enter img..\">\n");
       out.write("\n");
       out.write("                    ");
-      dal.PlayerDBcontext dal = null;
+      dal.ManagerDBcontext dal = null;
       synchronized (_jspx_page_context) {
-        dal = (dal.PlayerDBcontext) _jspx_page_context.getAttribute("dal", PageContext.PAGE_SCOPE);
+        dal = (dal.ManagerDBcontext) _jspx_page_context.getAttribute("dal", PageContext.PAGE_SCOPE);
         if (dal == null){
-          dal = new dal.PlayerDBcontext();
+          dal = new dal.ManagerDBcontext();
           _jspx_page_context.setAttribute("dal", dal, PageContext.PAGE_SCOPE);
         }
       }
       out.write("\n");
-      out.write("                    \n");
       out.write("                    <label for=\"\">Nationality</label>\n");
       out.write("                    <select name=\"nationalityId\">\n");
       out.write("                        ");
@@ -149,10 +147,6 @@ public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
         return;
       out.write("\n");
       out.write("                    </select>\n");
-      out.write("                    <label for=\"\">height</label>\n");
-      out.write("                    <input type=\"text\" name=\"height\" placeholder=\"Enter height..\">\n");
-      out.write("                    <label for=\"\">weight</label>\n");
-      out.write("                    <input type=\"text\" name=\"weight\" placeholder=\"Enter weight..\">\n");
       out.write("\n");
       out.write("                    <label for=\"\">Role</label>\n");
       out.write("                    <select name=\"roleId\">\n");
@@ -162,30 +156,22 @@ public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                    </select>\n");
       out.write("\n");
-      out.write("                    <label for=\"\">number</label>\n");
-      out.write("                    <input type=\"text\" name=\"number\" placeholder=\"Enter number..\">\n");
-      out.write("                    \n");
-      out.write("                    <label for=\"\">imgBack</label>\n");
-      out.write("                    <input type=\"text\" name=\"img\" placeholder=\"Enter imgBack..\">\n");
-      out.write("\n");
-      out.write("\n");
       out.write("                    <label for=\"\">Short Description</label>\n");
       out.write("                    <textarea name=\"shortDescription\" placeholder=\"Write something..\" style=\"height:200px\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${player.shortDescription}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${coach.shortDescription}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</textarea>\n");
       out.write("\n");
       out.write("                    <label for=\"\">Information</label>\n");
-      out.write("                    <textarea name=\"playerInfor\" placeholder=\"Write something..\" style=\"height:200px\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${player.playerInfor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("                    <textarea name=\"coachInfor\" placeholder=\"Write something..\" style=\"height:200px\">");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${coach.coachInfor}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</textarea>\n");
       out.write("\n");
-      out.write("                    <input type=\"submit\" value=\"Add Player\">\n");
+      out.write("                    <input type=\"submit\" value=\"Add Coach\">\n");
       out.write("                </form>\n");
       out.write("            </div>\n");
       out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
-      out.write("\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -219,7 +205,7 @@ public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${listNA.nationalityId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write(' ');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${listNA.nationalityId==player.getNationalityId()?\"selected\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${listNA.nationalityId==coach.getNationalityId()?\"selected\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${listNA.nationalityName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</option>\n");
@@ -251,7 +237,7 @@ public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_1.setParent(null);
-    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dal.getPlayerRole()}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${dal.getCoachRole()}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     _jspx_th_c_forEach_1.setVar("cr");
     int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
     try {
@@ -263,7 +249,7 @@ public final class addPlayer_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cr.roleId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('"');
           out.write(' ');
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cr.roleId==player.getRoleId()?\"selected\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cr.roleId==coach.getRoleId()?\"selected\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write('>');
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${cr.roleName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</option>\n");

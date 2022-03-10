@@ -169,7 +169,7 @@
                             <td><img src="${x.img}" alt=""></td>
                             <td>${x.datepublished}</td>
                             <td>
-                                <a href="" class="updateCoach"><i style="font-size:20px" class="fa">&#9756; Update
+                                <a href="UpdateN?id=${x.newId}" class="updateCoach"><i style="font-size:20px" class="fa">&#9756; Update
                                         New</i></a><br><br>
                                 <a href="" class="deleteCoach"><i style="font-size:21px" class="fa">&#xf014; Delete
                                         New</i></a>

@@ -148,7 +148,7 @@
                             <h3>There are 15 Coachs</h3>
                         </div>
                         <div class="col-md-6">
-                            <a href="" class="addCoach"><i style="font-size:20px" class="fa">&#xf196; Add
+                            <a href="view/addCoach.jsp" class="addCoach"><i style="font-size:20px" class="fa">&#xf196; Add
                                     Coach</i></a>
                         </div>
                     </div>
@@ -169,9 +169,9 @@
                             <td><img src="${x.img}" alt=""></td>
                             <td>${x.dob}</td>
                             <td>
-                                <a href="" class="updateCoach"><i style="font-size:20px" class="fa">&#9756; Update
+                                <a href="UpdateC?id=${x.coachId}" class="updateCoach"><i style="font-size:20px" class="fa">&#9756; Update
                                         Coach</i></a><br><br>
-                                <a href="" class="deleteCoach"><i style="font-size:21px" class="fa">&#xf014; Delete
+                                <a href="DeleteC?id=${x.coachId}" class="deleteCoach"><i style="font-size:21px" class="fa">&#xf014; Delete
                                         Coach</i></a>
                             </td>
                         </tr>
