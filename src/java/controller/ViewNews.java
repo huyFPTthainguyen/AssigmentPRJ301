@@ -21,8 +21,8 @@ import model.TypeNews;
  *
  * @author Admin
  */
-@WebServlet(name = "LoadNews", urlPatterns = {"/LoadN"})
-public class LoadNews extends HttpServlet {
+@WebServlet(name = "ViewNews", urlPatterns = {"/ViewN"})
+public class ViewNews extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +41,7 @@ public class LoadNews extends HttpServlet {
         ArrayList<TypeNews> typeNews = db.getTypeNews();
         request.setAttribute("listNews", listNews);
         request.setAttribute("typeNews", typeNews);
-        request.getRequestDispatcher("view/loadNews.jsp").forward(request, response);
+        request.getRequestDispatcher("view/viewNews.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

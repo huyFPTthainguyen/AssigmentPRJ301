@@ -98,7 +98,7 @@
 </head>
 
 <body>
-
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="form-register">
         <h2>Register</h2>
 
@@ -126,7 +126,7 @@
             </div>
         </form>
     </div>
-
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

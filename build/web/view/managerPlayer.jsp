@@ -136,6 +136,7 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="managerPlayer">
         <div class="top-managerPlayer">
             <h1>Manager players</h1>
@@ -181,6 +182,7 @@
             </div>
         </div>
     </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

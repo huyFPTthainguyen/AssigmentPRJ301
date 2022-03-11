@@ -17,7 +17,7 @@
         <style>
             .carousel-inner img {
                 width: 100%;
-                height: 700px;
+                height: 500px;
                 border-top: 1px solid #fff;
                 border-bottom: 1px solid #fff;
             }

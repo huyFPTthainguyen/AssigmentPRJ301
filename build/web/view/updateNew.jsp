@@ -67,6 +67,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="form-update">
             <h3>Update News</h3>
 
@@ -101,6 +102,7 @@
                 </form>
             </div>
         </div>
+                    <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
 

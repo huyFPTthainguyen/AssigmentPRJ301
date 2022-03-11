@@ -65,6 +65,7 @@
         </style>
     </head>
     <body>
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="form-update">
             <h3>Add Player</h3>
 
@@ -120,5 +121,6 @@
             </div>
         </div>
     </body>
+    <jsp:include page="footer.jsp"></jsp:include>
 </html>
 

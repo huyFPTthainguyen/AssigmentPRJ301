@@ -23,7 +23,7 @@
         <style>
             header {
                 background-image: url('images/background-champions-league.jpg');
-                background-color: rgba(255, 0, 0, 0.582);
+                background-color: #231F20;
                 width: 100%;
             }
 
@@ -123,7 +123,7 @@
                 font-weight: bold;
                 text-transform: uppercase;
                 text-decoration: none;
-                color: #001489;
+                color: red;
             }
 
             .bottom-header .list-menu a:hover {
@@ -184,8 +184,8 @@
                 margin: 0 20px;
             }
             .top-header .list-icons .name-login{
-                font-size: 40px;             
-                color: #001489;
+                font-size: 30px;             
+                color: red;
                 margin-left: 70px;
                 text-decoration: none;
             }
@@ -222,7 +222,7 @@
                                     </ul>
                                 </c:if>
                                 <c:if test="${account != null}">
-                                    <a href="" class="name-login">${account.userName}</a>
+                                    <a href="" class="name-login">Hello ${account.userName}</a>
                                     </c:if>
                             </div>
                         </div>
@@ -234,9 +234,8 @@
                             <div class="menu">
                                 <ul class="list-menu">
                                     <li><a href="home.jsp">Home</a></li>
-                                    <li><a href="">News</a></li>
-                                    <li><a href="">Matches</a></li>
-                                    <li><a href="teams.jsp">Teams</a></li>
+                                    <li><a href="LoadN">News</a></li>                                 
+                                    <li><a href="viewP">Teams</a></li>
                                     <li><a href="about.jsp">About</a></li>
                                 </ul>
                             </div>

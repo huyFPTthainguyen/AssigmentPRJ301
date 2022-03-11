@@ -41,7 +41,7 @@ public class ViewManager extends HttpServlet {
         ArrayList<Nationality> listNationality = db.getAllNationality();
         request.setAttribute("listCoachs", listCoachs);
         request.setAttribute("listNationality", listNationality);
-        request.getRequestDispatcher("view/managers.jsp").forward(request, response);
+        request.getRequestDispatcher("view/viewManagers.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

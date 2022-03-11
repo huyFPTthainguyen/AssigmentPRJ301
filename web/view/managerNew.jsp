@@ -136,6 +136,7 @@
 </head>
 
 <body>
+    <jsp:include page="header.jsp"></jsp:include>
     <div class="managerCoach">
         <div class="top-managerCoach">
             <h1>Manager News</h1>
@@ -181,6 +182,7 @@
             </div>
         </div>
     </div>
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 
 </html>

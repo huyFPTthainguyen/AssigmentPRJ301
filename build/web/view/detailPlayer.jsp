@@ -107,6 +107,7 @@
     </head>
 
     <body>
+        <jsp:include page="header.jsp"></jsp:include>
         <div class="detailPlayer">
             <div class="top-detailPlayer">
                 <img src="${player.imgBack}" alt="" width="100%" height="450px">
@@ -175,6 +176,7 @@
                 </div>              
             </div>
         </div>
+                <jsp:include page="footer.jsp"></jsp:include>
     </body>
 
 </html>
