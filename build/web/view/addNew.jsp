@@ -60,12 +60,12 @@
     </head>
 
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
+        
         <div class="form-add">
             <h3>Add News</h3>
 
             <div class="container">
-                <form action="addNews" method="POST">
+                <form action="../AddN" method="POST">
                     <label for="">Title</label>
                     <input type="text" name="title" placeholder="Enter title..">
 
@@ -73,7 +73,7 @@
                     <input type="text" name="img" placeholder="Enter url img..">
 
                     <label for="">Date Published</label>
-                    <input type="text" name="datePublished" placeholder="Enter date published..">
+                    <input type="text" name="datepublished" placeholder="Enter date published..">
 
                     <label for="">Short Description</label>
                     <textarea name="shortDescription" placeholder="Write something.." style="height:200px"></textarea>
@@ -92,6 +92,6 @@
                 </form>
             </div>
         </div>
-                    <jsp:include page="footer.jsp"></jsp:include>
+       
     </body>
 </html>

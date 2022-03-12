@@ -22,7 +22,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        db.addNew("fdfdsf", "fdssdf", "2022-12-3", "fdsfdsf", "fdsfdsf",2);
+        db.addNew("fdfdsf", "fdssdf", "2022-12-3", "fdsfdsf", "fdsfdsf", 2);
     }
 
     public ArrayList<News> getNews() {
@@ -78,7 +78,7 @@ public class NewDBcontext extends DBContext {
         return null;
     }
 
-    public void addNew(String title, String img, String datepublished,String shortDescription, String content, int typeId) {
+    public void addNew(String title, String img, String datepublished, String shortDescription, String content, int typeId) {
         String sql = "insert into News values(?,?,?,?,?,?)";
         PreparedStatement stm = null;
         try {
@@ -110,8 +110,8 @@ public class NewDBcontext extends DBContext {
         }
 
     }
-    
-    public void updateNew(int newId, String title, String img, String datepublished,String shortDescription, String content, int typeId) {
+
+    public void updateNew(int newId, String title, String img, String datepublished, String shortDescription, String content, int typeId) {
         String sql = "update News set title = ?, img = ?, date = ?,  \n"
                 + " description = ?,\n"
                 + "content = ?, typeId = ? where id = ?";
@@ -145,4 +145,71 @@ public class NewDBcontext extends DBContext {
         }
 
     }
+
+    public void deleteNew(int id) {
+        String sql = "delete from News where id = ?";
+        PreparedStatement stm = null;
+        try {
+            stm = connection.prepareStatement(sql);
+            stm.setInt(1, id);
+            stm.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (stm != null) {
+                try {
+                    stm.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+
+    public ArrayList<News> getPageNew(int pageindex, int pagesize) {
+        ArrayList<News> listNews = new ArrayList<>();
+        try {
+            String sql = "Select * from\n"
+                    + "(SELECT *,ROW_NUMBER() OVER (ORDER BY id ASC) as row_index FROM News) new \n"
+                    + "WHERE \n"
+                    + "row_index >= (? -1)* ? +1 AND row_index <= ? * ? ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, pageindex);
+            stm.setInt(2, pagesize);
+            stm.setInt(3, pageindex);
+            stm.setInt(4, pagesize);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                News r = new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                listNews.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listNews;
+    }
+    public int count()
+    {
+        try {
+            String sql = "SELECT count(*) as Total FROM News";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+            {
+                return rs.getInt("Total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NewDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+
 }

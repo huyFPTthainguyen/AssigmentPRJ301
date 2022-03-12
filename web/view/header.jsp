@@ -107,6 +107,35 @@
                 color: white;
                 background-color: red;
             }
+            .middle-header{
+                width: 100%;
+            }
+
+            .middle-header .list-manager{
+                width: 100%;
+                text-align: center;
+            }
+
+            .middle-header .list-manager li{
+                margin: 10px 20px;
+                border: 1px solid #fff;
+                padding: 10px;
+            }
+
+            .middle-header .list-manager a{
+                font-size: 20px;
+                color: #fff;
+                text-decoration: none;
+            }
+            .middle-header .list-manager li:hover {           
+                color: #d8302f;
+                background-color: #c70101;
+            }
+
+            .middle-header .list-manager li:focus {             
+                color: #d8302f;
+                background-color: #c70101;
+            }
 
             .bottom-header {
                 background-color: #fff;
@@ -228,15 +257,25 @@
                         </div>
                     </div>
                 </div>
+                <div class="middle-header">
+                    <ul class="list-manager">
+                        <c:if test="${account.isAdmin}">
+                            <li><a href="">Manager Account</a></li>                            
+                            <li><a href="ManagerN">Manager News</a></li> 
+                            <li><a href="ManagerC">Manager Coach</a></li>
+                            <li><a href="ManagerP">Manager Team</a></li>
+                            </c:if>
+                    </ul>
+                </div>
                 <div class="bottom-header">
                     <div class="row">
                         <div class="col-md-7">
                             <div class="menu">
                                 <ul class="list-menu">
-                                    <li><a href="home.jsp">Home</a></li>
-                                    <li><a href="LoadN">News</a></li>                                 
+                                    <li><a href="HomeC">Home</a></li>
+                                    <li><a href="ViewN">News</a></li>                                 
                                     <li><a href="viewP">Teams</a></li>
-                                    <li><a href="about.jsp">About</a></li>
+                                    <li><a href="view/about.jsp">About</a></li>
                                 </ul>
                             </div>
                         </div>

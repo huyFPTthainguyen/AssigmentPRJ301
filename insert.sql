@@ -35,7 +35,6 @@ insert into PlayerRole values('Defender')
 insert into PlayerRole values('Midfielder')
 insert into PlayerRole values('Forward')
 
-insert into Tournament values('','')
 
 insert into Nationality values('Spain','https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1280px-Bandera_de_Espa%C3%B1a.svg.png')
 insert into Nationality values('France','https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1280px-Flag_of_France.svg.png')
@@ -53,9 +52,6 @@ insert into Nationality values('Brazil','https://upload.wikimedia.org/wikipedia/
 insert into Nationality values('Belgium','https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Belgium.svg')
 insert into Nationality values('Netherlands','https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/1280px-Flag_of_the_Netherlands.svg.png')
 
-insert into MyTeam values('Manchester United','https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png')
-
-insert into MyOpponent values('','')
 
 insert into Account values('admin',123,1)
 insert into Account values('huy',123,0)

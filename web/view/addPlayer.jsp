@@ -65,23 +65,23 @@
         </style>
     </head>
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
+        
         <div class="form-update">
             <h3>Add Player</h3>
 
             <div class="container">
-                <form action="AddP" method="POST">
+                <form action="../AddP" method="post">
                     <label for="">Name</label>
-                    <input type="text" name="name" placeholder="Enter name..">
+                    <input type="text" name="playerName" placeholder="Enter name..">
 
                     <label for="">Img</label>
                     <input type="text" name="img" placeholder="Enter img..">
 
                     <label for="">Date</label>
-                    <input type="text" name="date" placeholder="Enter date..">
+                    <input type="text" name="dob" placeholder="Enter date..">
 
                     <label for="">Place</label>
-                    <input type="text" name="place" placeholder="Enter place..">
+                    <input type="text" name="birthPlace" placeholder="Enter place..">
 
                     <jsp:useBean id="dal" scope="page" class="dal.PlayerDBcontext" />
                     
@@ -107,7 +107,7 @@
                     <input type="text" name="number" placeholder="Enter number..">
                     
                     <label for="">imgBack</label>
-                    <input type="text" name="img" placeholder="Enter imgBack..">
+                    <input type="text" name="imgBack" placeholder="Enter imgBack..">
 
 
                     <label for="">Short Description</label>
@@ -121,6 +121,6 @@
             </div>
         </div>
     </body>
-    <jsp:include page="footer.jsp"></jsp:include>
+    
 </html>
 

@@ -23,7 +23,7 @@ public class PlayerDBcontext extends DBContext {
 
     public static void main(String[] args) {
         PlayerDBcontext db = new PlayerDBcontext();
-        db.deletePlayer(1);
+        db.addPlayer("fsdfsd", "fsdfsdf", "2022-12-2", "fsdfsdfsd", 2, 3, 1, 2, 1, "fsdfsdfsd", "fsdfsdfsd", "fsdfsdfsd");
     }
 
     public ArrayList<Nationality> getAllNationality() {
@@ -285,6 +285,46 @@ public class PlayerDBcontext extends DBContext {
             }
         }
 
+    }
+    public ArrayList<Player> getPagePlayer(int pageindex, int pagesize) {
+        ArrayList<Player> listPlayers = new ArrayList<>();
+        try {
+            String sql = "Select * from\n"
+                    + "(SELECT *,ROW_NUMBER() OVER (ORDER BY id ASC) as row_index FROM Player) player \n"
+                    + "WHERE \n"
+                    + "row_index >= (? -1)* ? +1 AND row_index <= ? * ? ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, pageindex);
+            stm.setInt(2, pagesize);
+            stm.setInt(3, pageindex);
+            stm.setInt(4, pagesize);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Player r = new Player(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4),
+                        rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8),
+                        rs.getInt(9), rs.getInt(10), rs.getString(11), rs.getString(12), rs.getString(13));
+                listPlayers.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listPlayers;
+    }
+    public int count()
+    {
+        try {
+            String sql = "SELECT count(*) as Total FROM News";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+            {
+                return rs.getInt("Total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NewDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
     
 }

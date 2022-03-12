@@ -43,7 +43,7 @@ public class AddCoach extends HttpServlet {
         String shortDescription = request.getParameter("shortDescription");
         String coachInfor = request.getParameter("coachInfor");
         db.addCoach(coachName, img, dob, nationalityId, roleId, imgBack, shortDescription, coachInfor);
-        response.sendRedirect("view/addCoach.jsp");
+        response.sendRedirect("ManagerC");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

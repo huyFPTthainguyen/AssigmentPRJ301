@@ -36,8 +36,22 @@ public class ManagerNew extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         NewDBcontext db = new NewDBcontext();
-        ArrayList<News> listNews = db.getNews();
-        request.setAttribute("listNews", listNews);
+        String page = request.getParameter("page");
+        if(page == null || page.trim().length() == 0)
+        {
+            page="1";
+        }
+        int pagesize = 3;
+        int pageindex = Integer.parseInt(page);
+        ArrayList<News> listpage = db.getPageNew(pageindex, pagesize);        
+        request.setAttribute("listpage", listpage); 
+        
+        int numofrecords = db.count();
+        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
+                :(numofrecords/pagesize) + 1;
+        request.setAttribute("totalpage", totalpage);
+        request.setAttribute("pagesize", pagesize);
+        request.setAttribute("pageindex", pageindex);
         request.getRequestDispatcher("view/managerNew.jsp").forward(request, response);
     }
 

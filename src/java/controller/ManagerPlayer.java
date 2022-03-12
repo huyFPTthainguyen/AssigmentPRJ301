@@ -37,8 +37,23 @@ public class ManagerPlayer extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PlayerDBcontext db = new PlayerDBcontext();
-        ArrayList<Player> listPlayers = db.getAllPlayer();
-        request.setAttribute("listPlayers", listPlayers);
+        String page = request.getParameter("page");
+        if(page == null || page.trim().length() == 0)
+        {
+            page="1";
+        }
+        int pagesize = 3;
+        int pageindex = Integer.parseInt(page);
+        ArrayList<Player> listpage = db.getPagePlayer(pageindex, pagesize);        
+        request.setAttribute("listpage", listpage); 
+        
+        int numofrecords = db.count();
+        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
+                :(numofrecords/pagesize) + 1;
+        request.setAttribute("totalpage", totalpage);
+        request.setAttribute("pagesize", pagesize);
+        request.setAttribute("pageindex", pageindex);
+       
         request.getRequestDispatcher("view/managerPlayer.jsp").forward(request, response);
     }
 

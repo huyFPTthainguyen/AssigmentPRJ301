@@ -65,18 +65,21 @@
         </style>
     </head>
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
+        
         <div class="form-update">
             <h3>Add Coach</h3>
 
             <div class="container">
-                <form action="AddC" method="post">
+                <form action="../AddC" method="post">
                                     
                     <label for="">Name</label>
                     <input type="text" name="coachName" value="${coach.coachName}" placeholder="Enter name..">
 
                     <label for="">Img</label>
                     <input type="text" name="img" value="${coach.img}" placeholder="Enter img..">
+                    
+                    <label for="">Date</label>
+                    <input type="text" name="dob" placeholder="Enter date..">
 
                     <jsp:useBean id="dal" scope="page" class="dal.ManagerDBcontext" />
                     <label for="">Nationality</label>
@@ -103,6 +106,6 @@
                 </form>
             </div>
         </div>
-                    <jsp:include page="footer.jsp"></jsp:include>
+                   
     </body>
 </html>

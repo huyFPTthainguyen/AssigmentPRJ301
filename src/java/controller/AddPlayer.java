@@ -48,7 +48,7 @@ public class AddPlayer extends HttpServlet {
         String shortDescription = request.getParameter("shortDescription");
         String playerInfor = request.getParameter("playerInfor");
         db.addPlayer(playerName, img, dob, birthPlace, nationalityId, height, weight, roleId, number, imgBack, shortDescription, playerInfor);
-        response.sendRedirect("view/addPlayer.jsp");
+        response.sendRedirect("ManagerP");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

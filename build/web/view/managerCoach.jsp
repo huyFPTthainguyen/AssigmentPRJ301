@@ -131,7 +131,13 @@
             background-color: #fff;
             border: 1px solid #140a47;
         }
+        .managerCoach .bottom-managerCoach .bottom3-managerCoach{
+                width: 100%;               
+                text-align: center;
+                margin-bottom: 20px;
+            }
     </style>
+    <script src="js/pagger.js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 
@@ -163,7 +169,7 @@
                             <th>Date</th>
                             <th>Action</th>
                         </tr>
-                        <c:forEach items="${listCoachs}" var="x">
+                        <c:forEach items="${listpage}" var="x">
                         <tr>
                             <td>${x.coachId}</td>
                             <td>${x.coachName}</td>
@@ -179,6 +185,12 @@
                         </c:forEach>
                     </table>
                 </div>
+                <div class="bottom3-managerCoach">
+                        <div id='pagger'></div>
+                        <script>
+                            pagger('pagger', "${pageindex}", "${totalpage}");
+                        </script>
+                    </div>
             </div>
         </div>
     </div>

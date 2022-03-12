@@ -5,7 +5,6 @@
  */
 package controller;
 
-import dal.ManagerDBcontext;
 import dal.NewDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "AddNew", urlPatterns = {"/AddN"})
-public class AddNew extends HttpServlet {
+@WebServlet(name = "DeleteNew", urlPatterns = {"/DeleteN"})
+public class DeleteNew extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,15 +33,18 @@ public class AddNew extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        NewDBcontext db = new NewDBcontext();
-        String title = request.getParameter("title");
-        String img = request.getParameter("img");
-        String datepublished = request.getParameter("datepublished");
-        String shortDescription = request.getParameter("shortDescription");
-        String content = request.getParameter("content");
-        int typeId = Integer.parseInt(request.getParameter("typeId"));
-        db.addNew(title, img, datepublished, shortDescription, content, typeId);
-        response.sendRedirect("ManagerN");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DeleteNew</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DeleteNew at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,7 +59,10 @@ public class AddNew extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        NewDBcontext db = new NewDBcontext();
+        int id = Integer.parseInt(request.getParameter("id"));
+        db.deleteNew(id);
+        response.sendRedirect("ManagerN");
     }
 
     /**

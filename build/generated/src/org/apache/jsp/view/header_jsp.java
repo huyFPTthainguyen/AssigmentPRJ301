@@ -156,6 +156,25 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                color: white;\n");
       out.write("                background-color: red;\n");
       out.write("            }\n");
+      out.write("            .middle-header{\n");
+      out.write("                width: 100%;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .middle-header .list-manager{\n");
+      out.write("                width: 100%;\n");
+      out.write("                text-align: center;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .middle-header .list-manager li{\n");
+      out.write("                margin: 10px 20px;\n");
+      out.write("                border: 1px solid #fff;\n");
+      out.write("                padding: 10px;\n");
+      out.write("            }\n");
+      out.write("\n");
+      out.write("            .middle-header .list-manager a{\n");
+      out.write("                font-size: 20px;\n");
+      out.write("                color: #fff;\n");
+      out.write("            }\n");
       out.write("\n");
       out.write("            .bottom-header {\n");
       out.write("                background-color: #fff;\n");
@@ -172,7 +191,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                font-weight: bold;\n");
       out.write("                text-transform: uppercase;\n");
       out.write("                text-decoration: none;\n");
-      out.write("                color: #001489;\n");
+      out.write("                color: red;\n");
       out.write("            }\n");
       out.write("\n");
       out.write("            .bottom-header .list-menu a:hover {\n");
@@ -233,8 +252,8 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                margin: 0 20px;\n");
       out.write("            }\n");
       out.write("            .top-header .list-icons .name-login{\n");
-      out.write("                font-size: 40px;             \n");
-      out.write("                color: #001489;\n");
+      out.write("                font-size: 30px;             \n");
+      out.write("                color: red;\n");
       out.write("                margin-left: 70px;\n");
       out.write("                text-decoration: none;\n");
       out.write("            }\n");
@@ -276,14 +295,22 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        </div>\n");
       out.write("                    </div>\n");
       out.write("                </div>\n");
+      out.write("                <div class=\"middle-header\">\n");
+      out.write("                    <ul class=\"list-manager\">\n");
+      out.write("                        ");
+      if (_jspx_meth_c_if_2(_jspx_page_context))
+        return;
+      out.write("\n");
+      out.write("                    </ul>\n");
+      out.write("                </div>\n");
       out.write("                <div class=\"bottom-header\">\n");
       out.write("                    <div class=\"row\">\n");
       out.write("                        <div class=\"col-md-7\">\n");
       out.write("                            <div class=\"menu\">\n");
       out.write("                                <ul class=\"list-menu\">\n");
-      out.write("                                    <li><a href=\"home.jsp\">Home</a></li>\n");
-      out.write("                                    <li><a href=\"\">News</a></li>                                 \n");
-      out.write("                                    <li><a href=\"teams.jsp\">Teams</a></li>\n");
+      out.write("                                    <li><a href=\"HomeC\">Home</a></li>\n");
+      out.write("                                    <li><a href=\"ViewN\">News</a></li>                                 \n");
+      out.write("                                    <li><a href=\"viewP\">Teams</a></li>\n");
       out.write("                                    <li><a href=\"about.jsp\">About</a></li>\n");
       out.write("                                </ul>\n");
       out.write("                            </div>\n");
@@ -363,7 +390,7 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\n");
-        out.write("                                    <a href=\"\" class=\"name-login\">");
+        out.write("                                    <a href=\"\" class=\"name-login\">Hello ");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${account.userName}", java.lang.String.class, (PageContext)_jspx_page_context, null));
         out.write("</a>\n");
         out.write("                                    ");
@@ -377,6 +404,37 @@ public final class header_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_2 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_2.setParent(null);
+    _jspx_th_c_if_2.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${account.isAdmin}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_2 = _jspx_th_c_if_2.doStartTag();
+    if (_jspx_eval_c_if_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\n");
+        out.write("                            <li><a href=\"\">Manager Account</a></li>\n");
+        out.write("                            <li><a href=\"\">Manager News</a></li>\n");
+        out.write("                            <li><a href=\"\">Manager Match</a></li>\n");
+        out.write("                            <li><a href=\"managerPlayer\">Manager Team</a></li>\n");
+        out.write("                            ");
+        int evalDoAfterBody = _jspx_th_c_if_2.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_2);
     return false;
   }
 }

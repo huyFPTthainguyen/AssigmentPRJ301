@@ -36,8 +36,22 @@ public class ManagerCoach extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ManagerDBcontext db = new ManagerDBcontext();
-        ArrayList<Coach> listCoachs = db.getCoachs();
-        request.setAttribute("listCoachs", listCoachs);
+        String page = request.getParameter("page");
+        if(page == null || page.trim().length() == 0)
+        {
+            page="1";
+        }
+        int pagesize = 3;
+        int pageindex = Integer.parseInt(page);
+        ArrayList<Coach> listpage = db.getPageCoach(pageindex, pagesize);        
+        request.setAttribute("listpage", listpage); 
+        
+        int numofrecords = db.count();
+        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
+                :(numofrecords/pagesize) + 1;
+        request.setAttribute("totalpage", totalpage);
+        request.setAttribute("pagesize", pagesize);
+        request.setAttribute("pageindex", pageindex);
         request.getRequestDispatcher("view/managerCoach.jsp").forward(request, response);
     }
 
