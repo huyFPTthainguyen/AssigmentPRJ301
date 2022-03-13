@@ -8,6 +8,7 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Account;
@@ -39,5 +40,43 @@ public class AccountDBcontext extends DBContext {
             Logger.getLogger(AccountDBcontext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    public ArrayList<Account> getPageAccount(int pageindex, int pagesize) {
+        ArrayList<Account> listaccount = new ArrayList<>();
+        try {
+            String sql = "Select * from\n"
+                    + "(SELECT *,ROW_NUMBER() OVER (ORDER BY id ASC) as row_index FROM Account) account \n"
+                    + "WHERE \n"
+                    + "row_index >= (? -1)* ? +1 AND row_index <= ? * ? ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, pageindex);
+            stm.setInt(2, pagesize);
+            stm.setInt(3, pageindex);
+            stm.setInt(4, pagesize);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account r = new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4));
+                listaccount.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listaccount;
+    }
+    public int count()
+    {
+        try {
+            String sql = "SELECT count(*) as Total FROM Account";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())
+            {
+                return rs.getInt("Total");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(NewDBcontext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 }

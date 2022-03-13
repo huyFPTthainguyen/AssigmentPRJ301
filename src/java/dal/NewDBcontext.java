@@ -22,7 +22,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        db.addNew("fdfdsf", "fdssdf", "2022-12-3", "fdsfdsf", "fdsfdsf", 2);
+        
     }
 
     public ArrayList<News> getNews() {
@@ -59,6 +59,70 @@ public class NewDBcontext extends DBContext {
 
         }
         return typeNews;
+    }
+    public ArrayList<News> getTop1NewsIsInterview()
+
+    {
+        ArrayList<News> listNews = new ArrayList<>();
+
+        try {
+            String sql = "select top 1 * from News\n"
+                + "where typeId = 4\n"
+                + "order by date desc";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                News r = new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                listNews.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listNews;
+    }
+    
+    public ArrayList<News> getTop1NewIsPostMatch()
+
+    {
+        ArrayList<News> listNews = new ArrayList<>();
+
+        try {
+            String sql = "select top 1 * from News\n"
+                + "where typeId = 2\n"
+                + "order by date desc";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                News r = new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                listNews.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listNews;
+    }
+    public ArrayList<News> getLatestNews()
+
+    {
+        ArrayList<News> listNews = new ArrayList<>();
+
+        try {
+            String sql = "select top 1 * from News\n"
+                + "where typeId = 3\n"
+                + "order by date desc";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                News r = new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                listNews.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listNews;
     }
 
     public News getNewId(int newId) {
@@ -196,14 +260,13 @@ public class NewDBcontext extends DBContext {
         }
         return listNews;
     }
-    public int count()
-    {
+
+    public int count() {
         try {
             String sql = "SELECT count(*) as Total FROM News";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 return rs.getInt("Total");
             }
         } catch (SQLException ex) {

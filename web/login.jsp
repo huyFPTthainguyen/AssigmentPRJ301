@@ -4,19 +4,16 @@
     Author     : Admin
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <style>
             body {
                 font-family: Arial, Helvetica, sans-serif;
-                color: #9f0000;
-                background-color: #fff;
             }
 
             .form-login {
@@ -27,26 +24,48 @@
             .form-login h2 {
                 font-size: 40px;
                 text-align: center;
-                color: #9f0000;
             }
 
-            form {
+            .form-login form {
                 border: 3px solid #f1f1f1;
             }
 
-            input[type=text],
-            input[type=password] {
+            .form-login .alert {
+                padding: 20px;
+                background-color: #f44336;
+                color: white;
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .form-login .closebtn {
+                margin-left: 15px;
+                color: white;
+                font-weight: bold;
+                float: right;
+                font-size: 22px;
+                line-height: 20px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .form-login .closebtn:hover {
+                color: black;
+            }
+
+            .form-login input[type=text],
+            .form-login input[type=password] {
                 width: 100%;
                 padding: 12px 20px;
                 margin: 8px 0;
                 display: inline-block;
-                border: 1px solid rgb(204, 204, 204);
+                border: 1px solid #ccc;
                 box-sizing: border-box;
             }
 
-            button {
-                background-color: #9f0000;
-                color: #fff;
+            .form-login button {
+                background-color: #001489;
+                color: white;
                 padding: 14px 20px;
                 margin: 8px 0;
                 border: none;
@@ -54,78 +73,87 @@
                 width: 100%;
             }
 
-            button:hover {
+            .form-login cancelbtn:hover {
                 opacity: 0.8;
+                text-decoration: none;
             }
 
-            .cancelbtn {
+            .form-login .cancelbtn {
                 width: auto;
                 padding: 10px 18px;
-                background-color: #9f0000;
+                background-color: #f44336;
+                text-decoration: none;
+                color: #fff;
             }
 
-            .imgcontainer {
+            .form-login .imgcontainer {
                 text-align: center;
                 margin: 24px 0 12px 0;
             }
 
-            .container {
+            .form-login .container {
                 padding: 16px;
             }
 
-            span.psw {
+            .form-login span.psw {
                 float: right;
                 padding-top: 16px;
             }
-            a{
-                color: #9f0000;
-            }
 
             @media screen and (max-width: 300px) {
-                span.psw {
+                .form-login span.psw {
                     display: block;
                     float: none;
                 }
 
-                .cancelbtn {
+                .form-login .cancelbtn {
                     width: 100%;
                 }
             }
         </style>
 
-        <title>Login</title>
+        <title>JSP Page</title>
     </head>
-
     <body>
-
+        <%
+            String userName = "", password = "";
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cook : cookies) {
+                    if (cook.getName().equals("userC")) {
+                        userName = cook.getValue();
+                    } else if (cook.getName().equals("passC")) {
+                        password = cook.getValue();
+                    }
+                }
+            }
+        %>
         <div class="form-login">
             <h2>Login</h2>
 
-            <form action="login" method="POST">
+            <form action="login" method="post">
                 <div class="imgcontainer">
-                    <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png"
-                         alt="" class="logo" width="100px" height="100px">
+                    <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/a/a1/Man_Utd_FC_.svg/1200px-Man_Utd_FC_.svg.png" alt="" class="logo" width="100px" height="100px">
                 </div>
-
+                ${alert}
                 <div class="container">
                     <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="user" required>
+                    <input type="text" placeholder="Enter Username" name="user" value="<%=userName%>" required>
+
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="pass" required>
+                    <input type="password" placeholder="Enter Password" name="pass" value="<%=password%>" required>
 
                     <button type="submit">Login</button>
                     <label>
-                        <input type="checkbox" name="remember"> Remember me
+                        <input type="checkbox" name="remember" value="ON"> Remember me
                     </label>
                 </div>
 
                 <div class="container" style="background-color:#f1f1f1">
-                    <button type="button" class="cancelbtn">Cancel</button>
+                    <a href="home" class="cancelbtn">Cancel</a>
                     <span class="psw">Don't have an account yet? <a href="register.jsp">Register</a></span>
                 </div>
             </form>
         </div>
-
     </body>
-
 </html>

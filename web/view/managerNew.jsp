@@ -138,6 +138,14 @@
             }
         </style>
         <script src="js/pagger.js" type="text/javascript"></script>
+        <script>
+        function showMess(id) {
+            var check = confirm('Are you sure to delete');
+            if (check === true) {
+                window.location.href = 'deleteNew?id=' + id;
+            }
+        }
+    </script>
         <title>Document</title>
     </head>
 
@@ -197,5 +205,5 @@
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
-
+    
 </html>

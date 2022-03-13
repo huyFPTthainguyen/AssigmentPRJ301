@@ -218,6 +218,34 @@
                 margin-left: 70px;
                 text-decoration: none;
             }
+            .top-header .name-login li{
+                margin: 36px 10px;
+            }
+
+            .top-header .name-login a{
+                font-size: 20px;
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .top-header .name-login .fa{
+                padding: 15px 15px;
+                color: #fff;
+                font-size: 15px;
+                border: 1px solid white;
+            }
+
+            .top-header .name-login .fa:hover{
+                color: #001489;
+                background-color: #fff;
+                border: 1px solid #001489;
+            }
+
+            .top-header .name-login .fa:focus{
+                color: #001489;
+                background-color: #fff;
+                border: 1px solid #001489;
+            }
         </style>
         <title>Document</title>
     </head>
@@ -251,8 +279,11 @@
                                     </ul>
                                 </c:if>
                                 <c:if test="${account != null}">
-                                    <a href="" class="name-login">Hello ${account.userName}</a>
-                                    </c:if>
+                                    <ul class="name-login">
+                                        <li><a href="#">Hello ${account.userName}</a></li>
+                                        <li><a href="Logout"><i class="fa fa-sign-out">Logout</i></a></li>
+                                    </ul>
+                                </c:if>
                             </div>
                         </div>
                     </div>

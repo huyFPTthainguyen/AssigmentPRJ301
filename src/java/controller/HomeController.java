@@ -5,13 +5,17 @@
  */
 package controller;
 
+import dal.NewDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.News;
+import model.TypeNews;
 
 /**
  *
@@ -32,6 +36,15 @@ public class HomeController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        NewDBcontext db = new NewDBcontext();
+        ArrayList<News> lastestNews = db.getLatestNews();
+        ArrayList<TypeNews> listTypeNews = db.getTypeNews();
+        ArrayList<News> lastestNewsInterview = db.getTop1NewsIsInterview();
+        ArrayList<News> lastestNewsPosMatch = db.getTop1NewIsPostMatch();
+        request.setAttribute("listTypeNews", listTypeNews);
+        request.setAttribute("lastestNewsInterview", lastestNewsInterview);
+        request.setAttribute("lastestNewsPosMatch", lastestNewsPosMatch);
+        request.setAttribute("lastestNews", lastestNews);
         request.getRequestDispatcher("view/home.jsp").forward(request, response);
     }
 

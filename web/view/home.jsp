@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +65,7 @@
                 height: 30px;
                 text-align: center;
                 position: absolute;
+                width: 40%;
             }
 
             .home-news .item-news h2 {
@@ -112,7 +114,44 @@
                 color: #c70101;
                 background-color: #fff;
                 border: 1px solid #c70101;
-            }                         
+            }
+            .home-news .lastest-item {
+                width: 100%;
+                border: 1px solid #c70101;
+                height: 100%;
+                margin: 10px auto;
+            }
+
+            .home-news .lastest-item h4 {
+                font-size: 20px;
+                color: #c70101;
+                background-color: #fff;
+                width: 30px;
+                height: 30px;
+                text-align: center;
+                position: absolute;
+                padding: 5px 10px;
+                width: 40%;
+            }
+
+            .home-news .lastest-item h2 {
+                font-size: 20px;
+                color: black;
+                margin: 10px;
+            }
+
+            .home-news .lastest-item h3 {
+                font-size: 20px;
+                color: rgba(128, 128, 128, 0.822);
+                margin: 10px;
+            }
+
+            .home-news .lastest-item p {
+                font-size: 20px;
+                color: black;
+                margin: 20px;
+            }
+
         </style>
         <title>Document</title>
 
@@ -121,63 +160,77 @@
     <body>
         <jsp:include page="header.jsp"></jsp:include>
         <jsp:include page="MySlides.jsp"></jsp:include>
-            <div class="home">
-                <h1>News</h1>
-                <div class="container">
-                    <div class="home-news">
-                        <div class="row">
-                            <div class="col-md-6">
+    <div class="home">
+        <h1>News</h1>
+            <div class="container">
+                <div class="home-news">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="lastest-item">
+                            <c:forEach items="${lastestNews}" var="lastN">
+                                <a href="detailNew?newId=${lastN.newId}">
+                                    <c:forEach items="${listTypeNews}" var="listTN">
+                                        <c:if test="${listTN.typeId == lastN.typeId}">
+                                            <h4>${listTN.typeName}</h4>
+                                        </c:if>
+                                    </c:forEach>
+                                    <img src="${lastN.img}" alt="Picture" width="100%" height="400px">
+                                    <h2>${lastN.title}</h2>
+                                    <h3>${lastN.shortDescription}</h3>
+                                    <p>${lastN.datepublished}</p>                                  
+                                </a>
+                            </c:forEach>
                             </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="item-news">
-                                            <a href="">
-                                                <h4>id</h4>
-                                                <img src="https://sport5.mediacdn.vn/158855217956261888/2021/8/31/612e0ca8d5797-16304078663241506566383.jpg"
+                        </div>                      
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="item-news">
+                                        <c:forEach items="${lastestNewsInterview}" var="lastNI">
+                                            <a href="detailNew?newId=${lastNI.newId}">
+                                                <c:forEach items="${listTypeNews}" var="listTN">
+                                                    <c:if test="${listTN.typeId == lastNI.typeId}">
+                                                        <h4>${listTN.typeName}</h4>
+                                                    </c:if>
+                                                </c:forEach>
+                                                <img src="${lastNI.img}"
                                                      alt="" width="100%" height="300px">
-                                                <h2>This is an important win in the Premier League before we turn our focus to
-                                                    the Champions League and towards Madrid. Back to orbit! We unite!</h2>
-                                                <h3>Ronaldo has labelled his recent injury issues as ‘the toughest
-                                                    hurdle
-                                                    in
-                                                    my career so far’
-                                                    but believes he has come out the other side with more perspective and
-                                                    patience.
-                                                </h3>
-                                                <p>17 Feb 2022</p>
+                                                <h2>${lastNI.title}</h2>
+                                                <h3>${lastNI.shortDescription}</h3>
+                                                <p>${lastNI.datepublished}</p>
                                             </a>
-                                        </div>
+                                        </c:forEach>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="item-news">
-                                            <a href="">
-                                                <h4>id</h4>
-                                                <img src="https://sport5.mediacdn.vn/158855217956261888/2021/8/31/612e0ca8d5797-16304078663241506566383.jpg"
-                                                     alt="" width="100%" height="300px">
-                                                <h2>This is an important win in the Premier League before we turn our focus to
-                                                    the Champions League and towards Madrid. Back to orbit! We unite!</h2>
-                                                <h3>Ronaldo has labelled his recent injury issues as ‘the toughest
-                                                    hurdle
-                                                    in
-                                                    my career so far’
-                                                    but believes he has come out the other side with more perspective and
-                                                    patience.
-                                                </h3>
-                                                <p>17 Feb 2022</p>
-                                            </a>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="item-news">
+                                        <c:forEach items="${lastestNewsPosMatch}" var="lastNPM">
+                                        <a href="detailNew?newId=${lastNPM.newId}">
+                                            <c:forEach items="${listTypeNews}" var="listTN">
+                                                    <c:if test="${listTN.typeId == lastNPM.typeId}">
+                                                        <h4>${listTN.typeName}</h4>
+                                                    </c:if>
+                                                </c:forEach>
+                                            <img src="${lastNPM.img}"
+                                                 alt="" width="100%" height="300px">
+                                            <h2>${lastNPM.title}</h2>
+                                            <h3>${lastNPM.shortDescription}</h3>
+                                            <p>${lastNPM.datepublished}</p>
+                                        </a>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="btn-show-more">
-                        <a href=""><button type="submit">See More News</button></a>
-                    </div>
-                
                 </div>
             </div>
+            <div class="btn-show-more">
+                <a href="ViewN"><button type="submit">See More News</button></a>
+            </div>
+
+        </div>
+
         <jsp:include page="footer.jsp"></jsp:include>
     </body>
 
