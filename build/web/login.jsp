@@ -24,6 +24,7 @@
             .form-login h2 {
                 font-size: 40px;
                 text-align: center;
+                color: #c70101;
             }
 
             .form-login form {
@@ -64,7 +65,7 @@
             }
 
             .form-login button {
-                background-color: #001489;
+                background-color: #c70101;
                 color: white;
                 padding: 14px 20px;
                 margin: 8px 0;
@@ -81,7 +82,7 @@
             .form-login .cancelbtn {
                 width: auto;
                 padding: 10px 18px;
-                background-color: #f44336;
+                background-color: #c70101;
                 text-decoration: none;
                 color: #fff;
             }
@@ -97,7 +98,7 @@
 
             .form-login span.psw {
                 float: right;
-                padding-top: 16px;
+                padding-top: 16px;             
             }
 
             @media screen and (max-width: 300px) {

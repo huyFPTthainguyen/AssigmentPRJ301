@@ -19,6 +19,10 @@ import model.Account;
  */
 public class AccountDBcontext extends DBContext {
 
+       public static void main(String[] args) {
+        AccountDBcontext db = new AccountDBcontext();
+        db.registerAccount("admin", "123");
+    }
     public Account getAccount(String userName, String password) {
         try {
             String sql = "Select * \n"
@@ -41,6 +45,7 @@ public class AccountDBcontext extends DBContext {
         }
         return null;
     }
+
     public ArrayList<Account> getPageAccount(int pageindex, int pagesize) {
         ArrayList<Account> listaccount = new ArrayList<>();
         try {
@@ -64,19 +69,60 @@ public class AccountDBcontext extends DBContext {
         }
         return listaccount;
     }
-    public int count()
-    {
+
+    public int count() {
         try {
             String sql = "SELECT count(*) as Total FROM Account";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 return rs.getInt("Total");
             }
         } catch (SQLException ex) {
             Logger.getLogger(NewDBcontext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
+    }
+
+    public int getTotalAccount() {
+
+        try {
+            String sql = "select count(*) from Account";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public Account checkAccountExist(String userName) {
+
+        try {
+            String sql = "select * from Account where name = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            stm.setString(1, userName);
+            while (rs.next()) {
+                return new Account(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getBoolean(4));
+            }
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    public void registerAccount(String userName, String password) {
+        
+        try {
+            String sql = "insert into Account values(?,?,0)";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, userName);
+            stm.setString(2, password);           
+            stm.executeUpdate();
+            ResultSet rs = stm.executeQuery();
+        } catch (Exception e) {
+        }
     }
 }

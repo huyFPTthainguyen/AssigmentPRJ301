@@ -137,7 +137,7 @@
                 margin-bottom: 20px;
             }
     </style>
-    <script src="js/pagger.js" type="text/javascript"></script>
+    <script src="js/paggerC.js" type="text/javascript"></script>
     <title>Document</title>
 </head>
 
@@ -152,7 +152,7 @@
                 <div class="bottom1-managerCoach">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>There are 15 Coachs</h3>
+                            <h3>There are ${totalcoach} Coachs</h3>
                         </div>
                         <div class="col-md-6">
                             <a href="view/addCoach.jsp" class="addCoach"><i style="font-size:20px" class="fa">&#xf196; Add

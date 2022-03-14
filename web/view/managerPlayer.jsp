@@ -137,7 +137,7 @@
                 margin-bottom: 20px;
             }
         </style>
-        <script src="js/pagger.js" type="text/javascript"></script>
+        <script src="js/paggerP.js" type="text/javascript"></script>
         <title>Document</title>
     </head>
 
@@ -152,7 +152,7 @@
                         <div class="bottom1-managerPlayer">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h3>There are 15 player</h3>
+                                    <h3>There are ${totalplayer} player</h3>
                                 </div>
                                 <div class="col-md-6">
                                     <a href="view/addPlayer.jsp" class="addplayer"><i style="font-size:20px" class="fa">&#xf196; Add

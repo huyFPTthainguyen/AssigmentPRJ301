@@ -326,5 +326,18 @@ public class PlayerDBcontext extends DBContext {
         }
         return -1;
     }
-    
+    public int getTotalPlayer() {
+
+        try {
+            String sql = "select count(*) from Player";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
 }

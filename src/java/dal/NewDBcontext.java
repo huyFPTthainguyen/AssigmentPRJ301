@@ -274,5 +274,18 @@ public class NewDBcontext extends DBContext {
         }
         return -1;
     }
+    public int getTotalNew() {
+
+        try {
+            String sql = "select count(*) from News";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
 
 }

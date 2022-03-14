@@ -5,23 +5,22 @@
  */
 package controller;
 
-import dal.ManagerDBcontext;
+import dal.AccountDBcontext;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Coach;
+import model.Account;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ManagerCoach", urlPatterns = {"/ManagerC"})
-public class ManagerCoach extends HttpServlet {
+@WebServlet(name = "RegisterController", urlPatterns = {"/register"})
+public class RegisterController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,26 +34,22 @@ public class ManagerCoach extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ManagerDBcontext db = new ManagerDBcontext();
-        String page = request.getParameter("page");
-        if(page == null || page.trim().length() == 0)
-        {
-            page="1";
-        }
-        int pagesize = 3;
-        int pageindex = Integer.parseInt(page);
-        ArrayList<Coach> listpage = db.getPageCoach(pageindex, pagesize);        
-        request.setAttribute("listpage", listpage); 
+        AccountDBcontext db = new AccountDBcontext();
+        String userName = request.getParameter("user");
+        String password = request.getParameter("pass");
+        String rePassword = request.getParameter("repass");
         
-        int numofrecords = db.count();
-        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
-                :(numofrecords/pagesize) + 1;
-        int count = db.getTotalCoach();
-        request.setAttribute("totalcoach", count);
-        request.setAttribute("totalpage", totalpage);
-        request.setAttribute("pagesize", pagesize);
-        request.setAttribute("pageindex", pageindex);
-        request.getRequestDispatcher("view/managerCoach.jsp").forward(request, response);
+        if (password.equals(rePassword)) {
+            Account account = db.checkAccountExist(userName);
+            if (account == null) {
+                db.registerAccount(userName, password);
+                response.sendRedirect("HomeC");
+            } else {
+                response.sendRedirect("register.jsp");
+            }
+        } else {
+            response.sendRedirect("register.jsp");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

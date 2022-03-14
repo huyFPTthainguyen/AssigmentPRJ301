@@ -49,6 +49,8 @@ public class ManagerNew extends HttpServlet {
         int numofrecords = db.count();
         int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
                 :(numofrecords/pagesize) + 1;
+        int count = db.getTotalNew();
+        request.setAttribute("totalnew", count);
         request.setAttribute("totalpage", totalpage);
         request.setAttribute("pagesize", pagesize);
         request.setAttribute("pageindex", pageindex);

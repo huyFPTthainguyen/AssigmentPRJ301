@@ -148,9 +148,9 @@ public class ManagerDBcontext extends DBContext {
             stm = connection.prepareStatement(sql);
             stm.setString(1, coachName);
             stm.setString(2, img);
-            stm.setString(3, dob);          
-            stm.setInt(4, nationalityId);           
-            stm.setInt(5, roleId);       
+            stm.setString(3, dob);
+            stm.setInt(4, nationalityId);
+            stm.setInt(5, roleId);
             stm.setString(6, imgBack);
             stm.setString(7, shortDescription);
             stm.setString(8, coachInfor);
@@ -176,6 +176,7 @@ public class ManagerDBcontext extends DBContext {
         }
 
     }
+
     public void deleteCoach(int id) {
         String sql = "delete from Coach where id = ?";
         PreparedStatement stm = null;
@@ -203,6 +204,7 @@ public class ManagerDBcontext extends DBContext {
         }
 
     }
+
     public ArrayList<Coach> getPageCoach(int pageindex, int pagesize) {
         ArrayList<Coach> listCoachs = new ArrayList<>();
         try {
@@ -227,19 +229,32 @@ public class ManagerDBcontext extends DBContext {
         }
         return listCoachs;
     }
-    public int count()
-    {
+
+    public int count() {
         try {
             String sql = "SELECT count(*) as Total FROM Coach";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
-            {
+            if (rs.next()) {
                 return rs.getInt("Total");
             }
         } catch (SQLException ex) {
             Logger.getLogger(NewDBcontext.class.getName()).log(Level.SEVERE, null, ex);
         }
         return -1;
+    }
+
+    public int getTotalCoach() {
+
+        try {
+            String sql = "select count(*) from Coach";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
     }
 }

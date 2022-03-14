@@ -152,7 +152,7 @@
                 <div class="bottom1-managerCoach">
                     <div class="row">
                         <div class="col-md-6">
-                            <h3>There are 15 Account</h3>
+                            <h3>There are ${totalaccount} Account</h3>
                         </div>
                         <div class="col-md-6">
                             

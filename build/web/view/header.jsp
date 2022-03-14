@@ -267,10 +267,10 @@
                         <div class="col-md-8">
                             <div class="list-icons">
                                 <ul class="icons-social-media">
-                                    <li><a href="" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="" class="youtube"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
                                 </ul>
                                 <c:if test="${account== null}">
                                     <ul class="icons-login">
@@ -291,7 +291,7 @@
                 <div class="middle-header">
                     <ul class="list-manager">
                         <c:if test="${account.isAdmin}">
-                            <li><a href="">Manager Account</a></li>                            
+                            <li><a href="ManagerA">Manager Account</a></li>                            
                             <li><a href="ManagerN">Manager News</a></li> 
                             <li><a href="ManagerC">Manager Coach</a></li>
                             <li><a href="ManagerP">Manager Team</a></li>
