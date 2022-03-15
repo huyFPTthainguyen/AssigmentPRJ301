@@ -22,7 +22,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        
+        System.out.println(db.searchNews("ha"));
     }
 
     public ArrayList<News> getNews() {
@@ -286,6 +286,26 @@ public class NewDBcontext extends DBContext {
         } catch (Exception e) {
         }
         return 0;
+    }
+    public ArrayList<News> searchNews(String input){
+        ArrayList<News> listNews = new ArrayList<>();
+
+        try {
+            String sql = "select * from News where title like ? or description like ? or content like ?  ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, "%"+input+"%");
+            stm.setString(2, "%"+input+"%");
+            stm.setString(3, "%"+input+"%");
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                News r = new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+                listNews.add(r);
+
+            }
+        } catch (Exception e) {
+
+        }
+        return listNews;
     }
 
 }

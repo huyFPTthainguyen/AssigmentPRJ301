@@ -312,9 +312,9 @@
                         </div>
                         <div class="col-md-5">
                             <div class="input-search">
-                                <form action="">
+                                <form action="SearchC" method="post">
                                     <div class="input-group">
-                                        <input class="text-input" type="text" placeholder="Search">
+                                        <input class="text-input" value="" type="${listNews}" name="text-input" placeholder="Search">
                                         <button class="btn-search" type="sumit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </form>
