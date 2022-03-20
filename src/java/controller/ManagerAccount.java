@@ -36,24 +36,24 @@ public class ManagerAccount extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         AccountDBcontext db = new AccountDBcontext();
-        String page = request.getParameter("page");
-        if(page == null || page.trim().length() == 0)
-        {
-            page="1";
-        }
-        int pagesize = 3;
-        int pageindex = Integer.parseInt(page);
-        ArrayList<Account> listpage = db.getPageAccount(pageindex, pagesize);        
+        
+//        if(page == null || page.trim().length() == 0)
+//        {
+//            page="1";
+//        }
+//        int pagesize = 3;
+//        int pageindex = Integer.parseInt(page);
+        ArrayList<Account> listpage = db.getAccounts();        
         request.setAttribute("listpage", listpage); 
         
-        int numofrecords = db.count();
-        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
-                :(numofrecords/pagesize) + 1;
-        int count = db.getTotalAccount();
-        request.setAttribute("totalaccount", count);
-        request.setAttribute("totalpage", totalpage);
-        request.setAttribute("pagesize", pagesize);
-        request.setAttribute("pageindex", pageindex);
+//        int numofrecords = db.count();
+//        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
+//                :(numofrecords/pagesize) + 1;
+//        int count = db.getTotalAccount();
+//        request.setAttribute("totalaccount", count);
+//        request.setAttribute("totalpage", totalpage);
+//        request.setAttribute("pagesize", pagesize);
+//        request.setAttribute("pageindex", pageindex);
         request.getRequestDispatcher("view/managerAccount.jsp").forward(request, response);
     }
 

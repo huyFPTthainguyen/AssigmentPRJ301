@@ -21,7 +21,23 @@ public class AccountDBcontext extends DBContext {
 
        public static void main(String[] args) {
         AccountDBcontext db = new AccountDBcontext();
-        db.registerAccount("admin", "123");
+        db.setRoleAccount(true, 2);
+    }
+       public ArrayList<Account> getAccounts() {
+        ArrayList<Account> listcounts = new ArrayList<>();
+
+        try {
+            String sql = "select * from Account ";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Account r = new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4));
+                listcounts.add(r);
+            }
+        } catch (Exception e) {
+
+        }
+        return listcounts;
     }
     public Account getAccount(String userName, String password) {
         try {
@@ -122,6 +138,17 @@ public class AccountDBcontext extends DBContext {
             stm.setString(2, password);           
             stm.executeUpdate();
             ResultSet rs = stm.executeQuery();
+        } catch (Exception e) {
+        }
+    }
+    public void setRoleAccount(boolean isAdmin, int userId) {
+        
+        try {
+            String sql = "update Account set isAdmin = ? where id = ?";
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setBoolean(1, isAdmin);
+            stm.setInt(2, userId);        
+            stm.executeUpdate();
         } catch (Exception e) {
         }
     }

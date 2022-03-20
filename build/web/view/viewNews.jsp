@@ -88,7 +88,9 @@
                 text-decoration: none; 
                 color: #c70101;
             }
+            
         </style>
+        <script src="js/paggerVN.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -98,7 +100,7 @@
                 <div class="top-news">
                     <h1>News</h1>
                 </div>
-                <c:forEach items="${listNews}" var="g">
+                <c:forEach items="${listpage}" var="g">
                     <div class="bottom-news">
                         <a href="detailN?newId=${g.newId}">
                             <div class="row">
@@ -124,6 +126,12 @@
                         </a>
                     </div>
                 </c:forEach>
+                <div class="bottom3-managerCoach">
+                        <div id='pagger'></div>
+                        <script>
+                            pagger('pagger', "${pageindex}", "${totalpage}");
+                        </script>
+                </div>
             </div>
         </div>
         <jsp:include page="footer.jsp"></jsp:include>

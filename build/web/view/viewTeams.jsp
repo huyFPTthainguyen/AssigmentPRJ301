@@ -131,7 +131,7 @@
                 <div class="top-teams">
                     <div class="row">
                         <div class="col-md-6">
-                            <h1>Chelsea Football Team</h1>
+                            <h1>Manchester United Team</h1>
                         </div>
                         <div class="col-md-6">
                             <ul class="player-management">

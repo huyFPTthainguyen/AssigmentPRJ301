@@ -22,7 +22,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        System.out.println(db.searchNews("ha"));
+        System.out.println(db.searchNews("20"));
     }
 
     public ArrayList<News> getNews() {
@@ -291,11 +291,12 @@ public class NewDBcontext extends DBContext {
         ArrayList<News> listNews = new ArrayList<>();
 
         try {
-            String sql = "select * from News where title like ? or description like ? or content like ?  ";
+            String sql = "select * from News where title like ? or description like ? or content like ? or date like ? ";
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, "%"+input+"%");
             stm.setString(2, "%"+input+"%");
             stm.setString(3, "%"+input+"%");
+            stm.setString(4, "%"+input+"%");
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
                 News r = new News(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5), rs.getString(6), rs.getInt(7));

@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/header.jsp</file>
             <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/SearchController.java</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/detailNew.jsp</file>
-            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/updateCoach.jsp</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/dal/NewDBcontext.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/LoginController.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/src/java/controller/HomeController.java</file>
+            <file>file:/D:/projectPrj/AssigmentPRJ301/web/view/viewTeams.jsp</file>
         </group>
     </open-files>
 </project-private>

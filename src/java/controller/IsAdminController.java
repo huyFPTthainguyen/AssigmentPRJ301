@@ -10,19 +10,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Account;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "IsAdminController", urlPatterns = {"/isadmin"})
+public class IsAdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,34 +33,11 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String userName = request.getParameter("user");
-        String password = request.getParameter("pass");
         AccountDBcontext db = new AccountDBcontext();
-        Account account = db.getAccount(userName, password);
-        String remember = request.getParameter("remember");
-        if (account == null) {
-//            String alert = "<div class=\"alert\">\n"
-//                    + "                    <span class=\"closebtn\" onclick=\"this.parentElement.style.display = 'none';\">&times;</span> \n"
-//                    + "                    <strong>Wrong !</strong> userName or password is incorrect.\n"
-//                    + "                </div>";
-//            request.setAttribute("alert", alert);
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            HttpSession session = request.getSession();
-            session.setAttribute("account", account);
-            Cookie u = new Cookie("userC", account.getUserName());
-            Cookie p = new Cookie("passC", account.getPassword());
-            if (remember != null) {
-                u.setMaxAge(60);
-                p.setMaxAge(60);
-            } else {
-                u.setMaxAge(0);
-                p.setMaxAge(0);
-            }
-            response.addCookie(u);
-            response.addCookie(p);          
-            response.sendRedirect("HomeC");
-        }
+        boolean isAdmin = request.getParameter("ia").equals("true");
+        int userId = Integer.parseInt(request.getParameter("id"));
+        db.setRoleAccount(isAdmin, userId);
+        response.sendRedirect("ManagerA");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -93,7 +67,6 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**

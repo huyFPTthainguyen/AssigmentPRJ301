@@ -17,7 +17,7 @@ function pagger(id,pageindex,totalpage)
     input.addEventListener("keyup", function(event) {
       
       if (event.keyCode === 13) {
-            window.location.href = 'ManagerA?page='+input.value; 
+            window.location.href = 'ViewN?page='+input.value; 
       }
     });
 }

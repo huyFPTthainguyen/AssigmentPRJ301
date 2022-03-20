@@ -41,7 +41,7 @@ public class ManagerNew extends HttpServlet {
         {
             page="1";
         }
-        int pagesize = 3;
+        int pagesize = 5;
         int pageindex = Integer.parseInt(page);
         ArrayList<News> listpage = db.getPageNew(pageindex, pagesize);        
         request.setAttribute("listpage", listpage); 

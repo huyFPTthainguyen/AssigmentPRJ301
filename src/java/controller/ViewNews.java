@@ -41,6 +41,21 @@ public class ViewNews extends HttpServlet {
         ArrayList<TypeNews> typeNews = db.getTypeNews();
         request.setAttribute("listNews", listNews);
         request.setAttribute("typeNews", typeNews);
+        String page = request.getParameter("page");
+        if(page == null || page.trim().length() == 0)
+        {
+            page="1";
+        }
+        int pagesize = 5;
+        int pageindex = Integer.parseInt(page);
+        ArrayList<News> listpage = db.getPageNew(pageindex, pagesize);        
+        request.setAttribute("listpage", listpage);
+        int numofrecords = db.count();
+        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
+                :(numofrecords/pagesize) + 1;
+        request.setAttribute("totalpage", totalpage);
+        request.setAttribute("pagesize", pagesize);
+        request.setAttribute("pageindex", pageindex);
         request.getRequestDispatcher("view/viewNews.jsp").forward(request, response);
     }
 
