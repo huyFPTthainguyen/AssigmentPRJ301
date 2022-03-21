@@ -315,7 +315,7 @@
                                 <form action="SearchC" method="post">
                                     <div class="input-group">
                                         <input class="text-input" value="" type="${listNews}" name="text-input" placeholder="Search">
-                                        <button class="btn-search" type="sumit"><i class="fa fa-search"></i></button>
+                                        <button class="btn-search" type="submit"><i class="fa fa-search"></i></button>
                                     </div>
                                 </form>
                             </div>

@@ -314,7 +314,7 @@ public class PlayerDBcontext extends DBContext {
     public int count()
     {
         try {
-            String sql = "SELECT count(*) as Total FROM News";
+            String sql = "SELECT count(*) as Total FROM Player";
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             if(rs.next())

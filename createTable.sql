@@ -76,20 +76,7 @@ create table Player
 	id int not null identity(1,1) primary key,
 	[name] nvarchar(255) null
  )
- create table [Match]
- (
-	id int not null identity(1,1) primary key,
-	dateMatch date null,
-	tournamentId int null,
-	homeId int null,
-	awayId int null
- )
- create table MyOpponent
- (
-	id int not null identity(1,1) primary key,
-	[name] nvarchar(255) null,
-	img nvarchar(255) null
- )
+ 
  create table MyTeam
  (
 	id int not null identity(1,1) primary key,

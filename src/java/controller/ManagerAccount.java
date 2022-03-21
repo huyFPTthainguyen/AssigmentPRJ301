@@ -49,8 +49,8 @@ public class ManagerAccount extends HttpServlet {
 //        int numofrecords = db.count();
 //        int totalpage = (numofrecords % pagesize ==0)?(numofrecords/pagesize)
 //                :(numofrecords/pagesize) + 1;
-//        int count = db.getTotalAccount();
-//        request.setAttribute("totalaccount", count);
+        int count = db.getTotalAccount();
+        request.setAttribute("totalaccount", count);
 //        request.setAttribute("totalpage", totalpage);
 //        request.setAttribute("pagesize", pagesize);
 //        request.setAttribute("pageindex", pageindex);

@@ -67,14 +67,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="header.jsp"></jsp:include>
+        
         <div class="form-update">
             <h3>Update News</h3>
 
             <div class="container">
-                <form action="updateNews" method="POST">
+                <form action="UpdateN" method="post">
                     <label for="">ID</label>
-                    <input type="text" name="newsId" placeholder="" value="${news.newId}" readonly="">
+                    <input type="text" name="newId" placeholder="" value="${news.newId}" readonly="">
                     
                     <label for="">Title</label>
                     <input type="text" name="title" placeholder="Enter title.." value="${news.title}">
@@ -83,7 +83,7 @@
                     <input type="text" name="img" placeholder="Enter url img.." value="${news.img}">
 
                     <label for="">Date Published</label>
-                    <input type="text" name="datePublished" placeholder="Enter date published.." value="${news.datepublished}">
+                    <input type="text" name="datepublished" placeholder="Enter date published.." value="${news.datepublished}">
 
                     <label for="">Short Description</label>
                     <textarea name="shortDescription" placeholder="Write something.." style="height:200px">${news.shortDescription}</textarea>
@@ -91,7 +91,7 @@
                     <label for="">Content</label>
                     <textarea name="content" placeholder="Write something.." style="height:200px">${news.content}</textarea>
 
-                    <jsp:useBean id="dal" scope="page" class="dal.NewDBcontext" />
+                   <jsp:useBean id="dal" scope="page" class="dal.NewDBcontext" />
                     <label for="">Type News</label>
                     <select name="typeId">
                         <c:forEach items="${dal.getTypeNews()}" var="listTN">
@@ -102,7 +102,6 @@
                 </form>
             </div>
         </div>
-                    <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>
 

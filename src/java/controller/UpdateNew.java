@@ -71,12 +71,12 @@ public class UpdateNew extends HttpServlet {
         String title = request.getParameter("title");
         String img = request.getParameter("img");
         String datepublished = request.getParameter("datepublished");
-        
-        
         String shortDescription = request.getParameter("shortDescription");
         String content = request.getParameter("content");
         int typeId = Integer.parseInt(request.getParameter("typeId"));
+        
         NewDBcontext db = new NewDBcontext();
+
         db.updateNew(newId, title, img, datepublished, shortDescription, content, typeId);
 
         response.sendRedirect("ManagerN");

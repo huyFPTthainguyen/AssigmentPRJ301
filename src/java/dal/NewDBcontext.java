@@ -22,7 +22,7 @@ public class NewDBcontext extends DBContext {
 
     public static void main(String[] args) {
         NewDBcontext db = new NewDBcontext();
-        System.out.println(db.searchNews("20"));
+        System.out.println(db.searchNews("ro"));
     }
 
     public ArrayList<News> getNews() {
@@ -188,6 +188,7 @@ public class NewDBcontext extends DBContext {
             stm.setString(4, shortDescription);
             stm.setString(5, content);
             stm.setInt(6, typeId);
+            stm.setInt(7, newId);
             stm.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(PlayerDBcontext.class.getName()).log(Level.SEVERE, null, ex);
